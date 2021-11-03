@@ -1,0 +1,2164 @@
+# <#>CSS<> SpeedSheet
+<b>What you need, faster.<>
+
+
+
+# CSS Basics
+
+
+
+### Case
+
+Case Sensitive
+
+
+
+### Comments
+
+<cb><#>/* Multilne comment. */<><>
+
+
+
+### Format
+
+<cb><v>selector<> {
+	<v>attribute<>: <v>value<>;
+}<>
+
+
+
+### Names
+
+<s>[<>  a-z A-Z _ -  <s>]    [<>  a-z A-Z 0-9 _ -  <s>]  *<>
+
+Alphas, numbers, underscores and dashes.
+Must not start with a number.
+
+
+Examples:
+
+<c><v>name-1<><>
+
+<c><v>name-two<><>
+@
+@ Identifier
+
+
+
+### Conventions - Naming
+
+<c><v>dash-separated-name<><>
+
+Lower case, dash separated words.
+Dashes (-) separate css names from JavaScript names.
+
+Note: javascript names use underscores ('_').
+
+
+
+### CSS Element
+
+<cb><v>element-name<><>
+
+Example:
+
+<cb>body {
+	<v>...<>
+}<>
+
+<cb>html {
+	<v>...<>
+}<>
+@
+@ Name
+
+
+
+### Selector Precedence
+
+Highest to Lowest:
+
+1. Inline <b>style=""<> before <b>\<style><> or CSS File.
+2. Current <b>@media<> type.
+3. <b>!important<>
+4. More specific before less specific.
+5. Later rules override earlier rules.
+6. <b>#id<> before <b>.class<> before <b>element<> selector.
+
+
+
+#### String
+
+<cb>"<v>A String<>"<>
+
+<cb>'<v>A String<>'<>
+
+
+Single or double quotes is fine.
+
+
+
+#### String - Escape Character
+
+Escape Syntax		<!>?<>
+
+
+Backslash			<!>?<>
+Quote / Single			<!>?<>
+Quote / Double		<!>?<>
+
+
+
+Example:
+
+<cb>"<v>A two line<> <!>??<> <v>string.<>"<>
+
+<cb>"<v>A word in <> <!>??<> <v>quotes<> <!>??<> <v>.<>"<>
+
+
+
+#### Inline Before Section or File
+
+<cb><#>\<!-- Lower Precedence --><>
+
+\<link rel="stylesheet" href="css_file_name">
+
+\<style>
+	p {font-size: 12px;}
+\</style>
+
+
+<#>\<!-- Higher Precedence --><>
+
+\<div style="font-size: 14px;"><v>...<><>
+
+
+
+#### Media Type
+
+The current media type overrides all other media types.
+
+
+
+#### !important
+
+<c>!important<> supercedes all other settings.
+
+
+
+#### More Specific Before Less Specific
+
+<cb><#>/* Less Specific (Lower Precedence) */<>
+
+p {
+	font-size: 12px
+}
+
+<#>/* More Specific (higher Precedence) */<>
+
+p.<v>class-name<> {
+	font-size: 14px
+}<>
+
+
+
+#### Later Rules Override Earlier Rules
+
+<cb><#>/* Earlier (Will Be Overridden) */<>
+
+p {
+	font-size: 12px
+}
+
+<#>/* Later (Takes Precedence) */<>
+p {
+	font-size: 14px
+}<>
+
+
+
+#### Id Before Class Before Element Selector
+
+<cb><#>/* Element - Lowest Precedence */<>
+
+p {
+	font-size: 12px
+}
+
+<#>/* Class - Higher Precedence */<>
+
+.<v>class-name<> {
+	font-size: 14px
+}
+
+<#>/* Id - Highest Precedence */<>
+
+\#<v>id-name<> {
+	font-size: 16px
+}<>
+@
+@ id, class name, element selector
+
+
+
+### Terminator
+
+<cb>;<>
+
+
+Separates css attributes.
+
+
+Example:
+
+<cb>body {
+	background: silver;
+	padding: 20px;
+}<>
+
+<cb>\<body style="background: silver; padding: 20px;"><v>...<><>
+
+
+### Border / Margin / Padding
+
+top right bottom left
+Margin ( Border ( Padding ) )
+
+
+# Symbol Lookup
+
+<c><#>/* Comment... */<><>	Multiline Comment
+
+<c><v>element<><> 				Element Selector (No Leading '<c>.<>' or '<c>#<>')
+
+<c>.<v>class-name<><> 			Class (Starts with '.')
+<c>#<v>id-1<><> 				Element Id (Starts With '#')
+
+
+
+# CSS In HTML
+
+
+
+### Html - CSS Inline
+
+<cb>\<<v>...<> style=“<v>css attributes...<>”><v>...<><>
+
+
+Inline Styling set at the element.
+
+
+Example:
+
+<cb>\<div style="<v>text-align:left;<>"><v>...<><>
+@
+@ Style, Styling, Element
+
+
+
+### Html - CSS Section
+
+<cb>\<style>
+	<v>css...<>
+\</style><>
+
+
+Example:
+
+<cb>\<style>
+	body {
+		margin: 20px;
+	}
+\</style><>
+@
+@ Style, Styling
+
+
+
+### Html - CSS File
+
+<cb>\<link rel="stylesheet" href="<v>css_file_name<>"><>
+
+
+Applies the styling from the file.
+
+
+Example:
+
+<cb>\<head>
+	\<link rel="stylesheet" href="<v>main.css<>">
+\</head><>
+@
+@ Include, Import from, Style, Styling, head, header
+
+
+
+# CSS - Import From Other File
+
+<cb>@import url(<v>css_file_name<>);<>
+
+
+Incorporates styles from another css file into this one.
+@
+@ Include, Import
+
+
+
+# Selectors
+
+
+
+### Selector - Summary
+
+CSS Element	<c><v>element-1<><>
+CSS Class	<c>.<v>class-1<><>
+CSS ID		<c>#<v>id-1<><>
+
+
+Element With Class:
+
+<cb><#>/* Element who's class is class-1 */<>
+
+<v>element1<>.<v>class-1<> {<v>...<><>
+
+
+Element With ID:
+
+<cb><#>/* Element who's id is ids1 */<>
+
+<v>element1<>#<v>id-1<> {<v>...<><>
+
+
+Element Under Element:
+
+<cb><#>/* element-2 is a descendant of element-1 */<>
+
+<v>element-1<> <v>element-2<> {<v>...<> 		<#>/* Style applied to element-2 */<><>
+
+
+### Selector - Separator
+
+<cb>,<>
+
+<cb><v>selector1<>, <v>selector2<> {
+	<v>...<>
+}<>
+
+Separates selectors sharing the same attributes.
+
+
+Example:
+
+<cb>.<v>box<>, <v>div<> {
+	<v>...<>
+}<>
+
+
+### Selector - Any
+
+<cb>*<>
+
+<!>What is this?
+How does it work?
+Examples!<>
+
+
+
+### Selector - Class
+
+CSS:
+
+<cb>.<v>class-name<> {
+	<v>...<>
+}<>
+
+
+Matches:
+
+<cb>\<p class="<v>class-name<>"><v>...<>\</p><>
+
+
+Identifies a style for a group of related elements.
+
+
+
+### Selector - Element
+
+CSS:
+
+<cb><v>element1<> {
+	<v>...<>
+}<>
+
+
+Matches:
+
+<cb>\<<v>element1<>><v>...<>\</<v>element1<>><>
+
+
+Identifies an element type.
+
+
+Example:
+
+<cb>div {
+	margin: 0;
+}<>
+
+
+
+### Selector - ID
+
+CSS:
+
+<cb>#<v>id-name<> {
+	<v>...<>
+}<>
+
+Matches:
+
+<cb>\<p id="<v>id-name<>"><v>...<>\</p><>
+
+
+Identifies a single unique element.
+	
+
+
+### Selector - Element Type with Class
+
+<cb><v>element<>.<v>class-1<> {
+	<v>...<>
+}<>
+
+	<elementType class="className">…</p>
+
+	Only elementType will have the style applied to it. All other element types will be ignored.
+
+Element Type with ID	elementType#idName {
+		attributes
+	}
+
+	<elementType="idName">...</elementType>
+	
+	Only elementType will have the style applied to it. All other element types will be ignored.
+
+Element Type ex:	<... id="idName">
+			No Styling Here.
+
+			<elementType id="idName">
+				Styling Applied Here.
+			</elementType>
+
+		</...>
+
+
+
+### Selector - After
+
+<cb><v>selector<>::after {
+	<v>...<>
+}<>
+
+
+Insert something after the content.
+@
+@ ::after
+
+
+
+### Selector - Before
+
+<cb><v>selector<>::before {
+	<v>...<>
+}<>
+
+
+Insert something before the content.
+@
+@ ::before
+
+
+
+### Selector - Children - All Descendants
+
+<cb><v>parent-selector<> <v>child-selector<> {
+	<v>...<>
+}<>
+
+Applies to all <c><v>child-selector<><> children inside <c><v>parent-selector<><>.
+
+
+
+### Selector - Children - Direct Descendants
+
+<cb><v>parent-selector<> > <v>child-selector<> {
+	<v>...<>
+}<>
+
+
+Child Selector
+
+
+Applies to direct <c><v>child-selector<><> children inside <c><v>parent-selector<><> only.
+
+
+
+## Pseudo Classes
+
+
+### Selector - First Child
+
+<cb>:first-child {
+	<v>...<>
+}<>
+@
+@ 1st, :first-child
+
+
+
+### Selector - Nth Child
+
+<cb>:nth-child(<v>n<>) {
+	<v>...<>
+}<>
+@
+@ :nth-child
+
+
+
+### Selector - Last Child
+
+<cb>:last-child {
+	<v>...<>
+}<>
+@
+@ :last-child
+
+
+
+### Selector - First Line
+
+<cb>:first-line {
+	<v>...<>
+}<>
+@
+@ 1st, :first-line
+
+
+
+### Selector - First of Selector
+
+<cb><v>selector<>:first-of-type {
+	<v>...<>
+}<>
+
+
+Example:
+
+<cb><v>div<>:first-of-type {
+	<v>...<>
+}<>
+
+<cb>.<v>sidebar<>:first-of-type {
+	<v>...<>
+}<>
+@
+@ 1st, :first-of-type, type
+
+
+
+### Selector - Link
+
+<cb>:link {
+	<v>...<>
+}<>
+@
+@ :link
+
+
+
+### Selector - Link, Visited
+
+<cb>:visited {
+	<v>...<>
+}<>
+@
+@ :visited
+
+
+
+### Selector - Hover
+
+<cb>:hover {
+	<v>...<>
+}<>
+@
+@ :hover
+
+
+
+# CSS Custom Properties
+@
+@ Variables
+
+
+
+### Custom Property - Set
+
+<cb>:root {
+	--<v>variable-name-1<>: <v>value<>;
+}<>
+
+Sets the value of the custom property / variable.
+Requires <c>--<> before the variable name.
+@
+@ Create, New
+
+
+
+### Custom Property - Get
+
+<cb><v>...<> {
+	<v>property<>: var(--<v>variable-name-1<>);
+}<>
+
+Sets <c><v>property<><> to the value of <c>--<v>variable-name-1<><>.
+@
+@ read, retrieve
+
+
+
+# Transititons
+
+
+### Transitions Basics
+
+<cb><v>...<> {
+	<v>property<>: <v>value<>;
+	transition: <v>property<> <v>duration<>s;
+}<>
+
+
+Transitions the change to <v>property<>'s new value in <v>duration<> seconds.
+
+
+Example:
+
+<cb>div:hover {
+	<v>background<>: LightSkyBlue;
+	transition: <v>background<> <v>0.5<>s;
+}<>
+
+
+
+# Override / Force
+
+<cb>!important<>
+
+
+Forces this attribute setting to override any others even if they would normally have higher precedence.
+
+
+Example:
+
+<cb>div {
+	width: 100% !important;
+}<>
+@
+@ Important, !important
+
+
+
+# Text - Alignment
+
+
+text-align	[ left | right | center ]
+vertical-align	[ text-top | middle | text-bottom ]		// Other tags too.
+word-wrap	[ break-word ]
+
+
+# Text - Alignment - No Word Wrap
+
+<cb>white-space: nowrap;<>
+
+Works with headings too.
+
+
+
+# Background
+
+
+
+### Background - Background Color
+
+<cb>background-color: <v>colour-unit<>;<>
+
+
+
+### Background - Image
+
+<cb>background-image: url(<v>image_path<>);<>
+
+
+
+### Background - Image Position
+
+<cb>background-position: <v>position-type<>;<>
+
+<c><v>position-type<><>  <s>-<>  left | right | bottom | top | percentage | length
+
+
+
+### Background - Image Repeat
+
+<cb>background-repeat: <v>repeat-type<>;<>
+
+
+<c><v>repeat-type<><>  <s>-<>  no-repeat | repeat | repeat-x | repeat-y
+
+
+### Background - Image Scroll Attachment
+
+<cb>background-attachment: <v>attachment-type<>;<>
+
+
+	Types	fixed						// Image stays fixed while the page scrolls.
+		scroll						// Image scrolls wit the page.
+
+
+
+# Blocks
+
+
+
+### Block - clear
+
+<cb>clear: <v>clear-type<><>
+
+<c><v>clear-type<><>  <s>-<>  <v>left<>  <s>|<>  <v>right<>  <s>|<>  <v>both<>  <s>|<>  <v>none<>
+
+
+
+### Block - display
+
+<cb>display: <v>display-type<><>
+
+<c><v>display-type<><>  <s>-<>  none | block | inline | list-item | run-in | compact ...
+
+	none - Do Not Display
+	block - Display With Line Breaks Before And After
+	inline - Display With No Line Breaks
+	inline-block - Displays as Inline-level block (can set height, width). No line-break after element.
+
+
+Sets how an item should be displayed.. hidden, with line breaks or inline.
+
+
+
+### Block - float
+
+<cb>float: <v>float-type<>;<>
+
+
+<c><v>float-type<><>  <s>-<>  <v>left<>  <s>|<>  <v>right<>  <s>|<>  <v>none<>
+
+
+Used primarily for images and layouts.
+Float left or right only.
+
+
+
+### Block - Overflow
+
+<cb>overflow: <v>overflow-type<>;<>
+
+	<c>visible<>		Show All / Not Clipped <#>(default)<>
+	<c>hidden<>		Overflow Hidden
+	<c>scroll<>		Overflow Clipped, Scroll Bars Added
+	<c>auto<>		Overflow Clipped, Scroll Bars When Needed
+@
+@ scroll
+
+
+
+### Block - Overflow - Scroll X (overflow-x)
+
+<cb>overflow-x: <v>overflow-type<>;<>
+
+
+<c><v>overflow-type<><>  <s>-<>  <v>scroll<>  <s>|<>  <v>hidden<>  <s>|<>  <v>auto<>
+
+	<c>visible<>		Show All / Not Clipped <#>(default)<>
+	<c>hidden<>		Overflow Hidden
+	<c>scroll<>		Overflow Clipped, Scroll Bars Added
+	<c>auto<>		Overflow Clipped, Scroll Bars When Needed
+
+<!>Fix this. This covers all parts of overflow, not just scrolling. Maybe move scroll settings into own section.<>
+
+Works on block elements only.
+<!>? Must have a specified width?<>
+@
+@ Overflow
+
+
+### Block - Overflow - Scroll Y (overflow-y)
+
+<cb>overflow-y: <v>overflow-type<>;<>
+
+
+<c><v>overflow-type<><>  <s>-<>  <v>scroll<>  <s>|<>  <v>hidden<>  <s>|<>  <v>auto<>
+
+	<c>visible<>		Show All / Not Clipped <#>(default)<>
+	<c>hidden<>		Overflow Hidden
+	<c>scroll<>		Overflow Clipped, Scroll Bars Added
+	<c>auto<>		Overflow Clipped, Scroll Bars When Needed
+
+<!>Fix this. This covers all parts of overflow, not just scrolling. Maybe move scroll settings into own section.<>
+
+Works on block elements only.
+Must have a specified height.
+@
+@ Overflow
+
+
+# Box Styling
+@
+@ Box Model
+
+
+
+## Overview
+
+Margin [ Border [ Padding [] ] ]
+	
+Margin	Outside border. Transparent
+Border
+Padding	White spacing between border and content. Background color.
+
+Note: Margins do not apply inside tables. TR, TH, TD will not be affected.
+
+<image "Box Model.png">
+
+
+
+## Border
+@
+@ border-only
+
+
+
+### Border - Set All
+
+<cb>border: <v>border-width<> <v>border-style<> <v>border-color<>;<>
+
+
+Example:
+
+<cb>border: 2px solid red;<>
+
+
+
+### Border - Border Collapse
+
+<cb>border-collapse: <v>collapse-type<>;<>
+
+<c><v>collapse-type<><>  <s>-<>  <c>collapse<>  <s>|<>  <c>separate<>  <s>|<>  <c>inherit<>
+
+
+Sets whether table element borders are separated (detached) or collapsed into one single border.
+separated is the default.
+
+
+### Border - Border Color
+
+<cb>border-color: <v>color<><>
+@
+@ colour
+
+
+
+### Border - Border Style
+
+<cb>border-style: <v>style<><>
+
+<c><v>style<><>  <s>-<>  <c>none<>  <s>|<>  <c>hidden<>  <s>|<>  <c>dotted<>  <s>|<>  <c>dashed<>  <s>|<>  <c>solid<>  <s>|<>  <c>double<>  <s>|<>  <c>groove<>  <s>|<>  <c>ridge<>  <s>|<>  <c>inset<>  <s>|<>  <c>outset<>
+
+
+
+
+### Border - Border Width
+
+<cb>border-width: <v>width<><>
+
+
+
+### Border - Hide
+
+<cb>border: none;<>
+@
+@ None
+
+
+
+### Border - Rounding
+
+<cb>border-radius: <v>radius<><>
+
+
+<c><v>radius<><>  <s>-<>  Width of the radius.
+@
+@ radius, rounded
+
+
+
+## Box Shadow
+
+<!>Incomplete.<>
+
+<cb>box-shadow: <v>shadow-type<> <!>Missing_Parameters_Here<>;<>
+
+
+<c><v>shadow-type<><>  <s>-<>   <c>horizontal-offset<>  <s>|<>  <c>vertical-offset<>  <s>|<>  <c>blur<>  <s>|<>  <c>blurWidth<>  <s>|<>  <c>color<>
+
+
+Example:
+
+<cb>box-shadow: 2px 2px 5px 3px 5px #C0C0C0;<>
+
+
+
+## Margin
+@
+@ margin-only
+
+
+
+### Margin - Set All
+
+<cb>margin: <v>size<>;<>
+
+<cb>margin: <v>top_and_bottom<> <v>left_and_right<>;<>
+
+<cb>margin: <v>top<> <v>left_and_right<> <v>bottom<>;<>
+
+<cb>margin: <v>top<> <v>right<> <v>bottom<> <v>left<>;<>
+
+<cb>margin: auto;<>
+
+Margins are outside the element (outside the border).
+
+<!>What does <c>auto<> do?<>
+
+
+Example:
+
+<cb>p {
+	margin: 16px;
+}<>
+
+<cb>p {
+	margin: 16px 0 16px 0;
+}<>
+
+
+
+
+### Margin - Set Top
+
+<cb>margin-top: <v>size<>;<>
+
+
+
+### Margin - Set Bottom
+
+<cb>margin-bottom: <v>size<>;<>
+
+
+### Margin - Set Left
+
+<cb>margin-left: <v>size<>;<>
+
+
+
+### Margin - Set Right
+
+<cb>margin-right: <v>size<>;<>
+
+
+
+## Padding
+@
+@ padding-only
+
+
+
+### Padding - Set All
+
+<cb>padding: <v>size<>;<>
+
+<cb>padding: <v>top<> <v>right<> <v>bottom<> <v>left<>;<>
+
+<cb>padding: auto;<>
+
+Padding is inside the element (inside the border).
+
+
+Example:
+
+<cb>p {
+	padding: 16px;
+}<>
+
+<cb>p {
+	padding: 16px 0 16px 0;
+}<>
+
+
+### Padding - Set Top
+
+<cb>padding-top: <v>size<>;<>
+
+
+### Padding - Set Bottom
+
+<cb>padding-bottom: <v>size<>;<>
+
+
+### Padding - Set Left
+
+<cb>padding-left: <v>size<>;<>
+
+
+### Padding - Set Right
+
+<cb>padding-right: <v>size<>;<>
+
+
+
+## Box Sizing
+@
+@ box-size-only, box-sizing-only, box-size, size, dimensions
+
+
+
+### Element - Height
+
+<cb>height: <v>size<>;<>
+
+
+
+### Element - Height - Min Height
+
+<cb>min-height: <v>size<>;<>
+
+
+Defines the minimum heigh of this element.
+@
+@ Minimum, height-min, min-height
+
+
+
+### Element - Height - Max Height
+
+<cb>max-height: <v>size<>;<>
+
+
+Defines the maximum heigh of this element.
+@
+@ maximum, height-max, max-height
+
+
+
+### Element - Height - Actual Height
+
+<cb>actual height = <v>height value<> + padding + border<>
+
+
+height value = value provided by css.
+
+Changed by <c>box-sizing<>.
+
+
+### Element - Width
+
+<cb>width: <v>size<>;<>
+
+
+
+### Element - Width - Min Width
+
+<cb>min-width: <v>size<>;<>
+
+
+Defines the minimum width of this element.
+@
+@ Minimum, width-min, min-width
+
+
+
+### Element - Width - Max Width
+
+<cb>max-width: <v>size<>;<>
+
+
+Defines the maximum width of this element.
+@
+@ maximum, width-max, max-width
+
+
+
+### Element - Width - Actual Width
+
+<cb>actual width = <v>width value<> + padding + border<>
+
+
+width value = value provided by css.
+
+Changed by <c>box-sizing<>.
+
+
+### Element - Set Sizing To Sizing At Border
+
+<cb>box-sizing: border-box;<>
+
+
+Normally height and width do not include padding and border sizes.
+The end size can be bigger than expected.
+Setting <c>border-box<> forces the dimensions to be calculated at the border size.
+Padding and content are determined from there.
+
+
+Example:
+
+<cb>*, ::after, ::before {
+	box-sizing: border-box;
+}<>
+
+
+
+# Colors
+@
+@ Colours
+
+
+
+### Color - Units
+
+<cb>#<v>FFF<><>
+
+<cb>#<v>FFFFFF<><>
+
+
+Full Color List:
+<l>https://en.wikipedia.org/wiki/Web_colors<>
+
+
+
+### Color - Units - RGB / RGBA
+
+<cb>rgb(<v>red<>, <v>green<>, <v>blue<>)<>
+
+<cb>rgba(<v>red<>, <v>green<>, <v>blue<>, <v>alpha<>)<>
+
+
+<c><v>red<><>				0 - 255
+<c><v>green<><>			0 - 255
+<c><v>blue<><>			0 - 255
+<c><v>alpha<><>			0.0 (Transparent) - 1.0 (Opaque)
+
+
+Example:
+
+<cb>button {
+	background: rgba(255, 255, 255, 0.5);
+}<>
+
+
+
+### Colors - Foreground
+
+<cb>color <v>color-unit<>;<>
+@
+@ main, front
+
+
+### Colors - Background
+
+<cb>background <v>color-unit<>;<>
+
+
+
+# Attributes
+
+
+### Attributes - Add Text (content)
+
+<cb>content: '<v>content text<>';<>
+
+<cb><v>selector<> {
+	content: '<v>content text<>';
+}<>
+
+
+Example:
+
+<cb>span::before {
+	content: "Span Here:"
+}
+
+\<span><v>Some Text<>\</span><>
+
+
+
+
+# Cursors
+
+
+### Cursor - Types
+
+<cb>cursor: <v>cursor-type<>;<>
+
+
+<c><v>cursor-type<><>  <s>-<>	crosshair		<s>|<>
+				default		<s>|<>
+				help			<s>|<>
+				move		<s>|<>
+				text			<s>|<>
+				pointer		<s>|<>
+				progress		<s>|<>
+				wait			<s>|<>
+
+				n-resize		<s>|<>
+				ne-resize		<s>|<>
+				e-resize		<s>|<>
+				se-resize		<s>|<>
+				s-resize		<s>|<>
+				sw-resize		<s>|<>
+				w-resize		<s>|<>
+				nw-resize
+
+
+
+### Cursors
+
+From W3 Schools:
+<l>https://www.w3schools.com/cssref/pr_class_cursor.asp<>
+
+.alias {cursor: alias;}
+.all-scroll {cursor: all-scroll;}
+.auto {cursor: auto;}
+.cell {cursor: cell;}
+.context-menu {cursor: context-menu;}
+.col-resize {cursor: col-resize;}
+.copy {cursor: copy;}
+.crosshair {cursor: crosshair;}
+.default {cursor: default;}
+.e-resize {cursor: e-resize;}
+.ew-resize {cursor: ew-resize;}
+.grab {cursor: grab;}
+.grabbing {cursor: grabbing;}
+.help {cursor: help;}
+.move {cursor: move;}
+.n-resize {cursor: n-resize;}
+.ne-resize {cursor: ne-resize;}
+.nesw-resize {cursor: nesw-resize;}
+.ns-resize {cursor: ns-resize;}
+.nw-resize {cursor: nw-resize;}
+.nwse-resize {cursor: nwse-resize;}
+.no-drop {cursor: no-drop;}
+.none {cursor: none;}
+.not-allowed {cursor: not-allowed;}
+.pointer {cursor: pointer;}
+.progress {cursor: progress;}
+.row-resize {cursor: row-resize;}
+.s-resize {cursor: s-resize;}
+.se-resize {cursor: se-resize;}
+.sw-resize {cursor: sw-resize;}
+.text {cursor: text;}
+.url {cursor: url(myBall.cur),auto;}
+.w-resize {cursor: w-resize;}
+.wait {cursor: wait;}
+.zoom-in {cursor: zoom-in;}
+.zoom-out {cursor: zoom-out;}
+
+
+
+# Size
+@
+@ dimensions
+
+
+### Size - Units
+
+<c><v>_<>%<>		Percent						<#>20%<>
+<c><v>_<>in<>		inch							<#>5in<>
+<c><v>_<>cm<>		centimeter					<#>5cm<>
+<c><v>_<>mm<>		millimeter						<#>5mm<>
+<c><v>_<>pt<>		Point
+
+		<c>1pt<> = 1/72 inch
+		<c>72pt<> = 1 inch
+
+<c><v>_<>pc<>		1pc = 12 pt
+<c><v>_<>px<>		pixels.
+@
+@ points, pt, pixels, px, percent, inches, mm, millimeters
+
+
+
+### Size - Relative Units
+
+<c><v>_<>em<>		Relative to Parent Font Size		<#>3.0em<>
+			<c>1em<> = Parent Font Size
+
+<c><v>_<>ex<>		Relative to Parent Font Height	<#>1.5ex<>
+			<c>1ex<> = ½ Font Size (?)
+
+<c><v>_<>rem<>	Relative to Root Font Size		<#>3.0rem<>
+			<c>1em<> = Root Font Size
+
+
+
+<c><v>_<>lh<>		Line Height
+
+<c><v>_<>vw<>		1% of Viewport Width
+
+<c><v>_<>vh<>		1% of Viewport Height
+
+<c><v>_<>vmax<>	1% of Viewport Largest Dimension
+
+<c><v>_<>vmin<>	1% of Viewport Smallest Dimension
+
+
+
+### Size - Comparison
+
+1cm = 10mm = 25/64in = 38px
+
+1in = 2.54cm = 96px
+
+1pc = 1/6in = 16px
+
+1pt = 1/72in = 1.333px
+
+1px = 1/96in
+@
+@ cm, in, pc, pt, px
+
+
+
+# Links
+
+<c>a:link {<v>...<>}<>
+<c>a:visited {<v>...<>}<>
+<c>a:hover {<v>...<>}<>			<#>When under mouse.<>
+<c>a:focus {<v>...<>}<>			<#>When selected.<>
+<c>a:active {<v>...<>}<>			<#>When clicked.<>
+
+
+Example:
+
+<c>a:link {text-decoration: none; }<>
+
+<c>a:visited {text-decoration: none; }<>
+
+<c>a:hover {text-decoration: underline; }<>
+
+<c>a:active {text-decoration: underline; }<>
+
+
+
+# Lists
+
+
+### Lists - Ordered List - Style
+
+<cb>list-style-type: <v>type<>;<>
+
+<c><v>type<><>  <s>-<>  <c>decimal<>  <s>|<>  <c>decimal-leading-zero<>  <s>|<>
+		<c>lower-alpha<>  <s>|<>  <c>upper-alpha<>  <s>|<>  <c>lower-greek<>  <s>|<>
+		<c>lower-roman<>  <s>|<>  <c>upper-roman<>  <s>|<>  <c>none<>
+
+	<c>decimal<>					1, 2, 3
+	<c>decimal-leading-zero<>	0, 1, 2
+	<c>lower-alpha<>				a, b, c
+	<c>upper-alpha<>				A, B, C
+	<c>lower-greek<>				⍺, β, δ
+	<c>lower-roman<>				i, ii, iii
+	<c>upper-roman<>				I, II, III
+	<c>none<>				
+
+Note: No <c>upper-greek<>
+Note: <c><v>...-alpha<><> and <c><v>...-latin<><> are the same
+
+
+Applies to <c>\<ol><> <c>\<li><> html tags.
+@
+@ ol, li, numbered, styling, none
+
+
+
+### Lists - Unordered List - Style
+
+<cb>list-style-type: <v>type<>;<>
+
+<c><v>type<><>  <s>-<>  <c>disc<>  <s>|<>  <c>circle<>  <s>|<>  <c>square<>  <s>|<>  <c>none<>
+
+	<c>disc<>		Bullet
+	<c>circle<>		Circle
+	<c>square<>		Square
+	<c>none<>		No List Marker
+
+
+Applies to <c>\<ul><> <c>\<li><> html tags.
+@ ul, li, bulleted, styling, none
+
+
+
+# Media
+@
+@ Responsive, Responsiveness, Break
+
+
+
+### Media - By Size
+
+<cb>@media (min-width: <v>units<>) {
+	<v>...<>
+}<>
+
+
+
+#### Small Devices
+
+<cb>@media (min-width: 576px) {
+	<v>...<>
+}<>
+
+Landscape Phones
+576px and Up
+
+(Bootstrap Standard)
+
+
+#### Medium Devices
+
+<cb>@media (min-width: 768px) {
+	<v>...<>
+}<>
+
+Tablets
+768px and Up
+
+(Bootstrap Standard)
+
+
+#### Large Devices
+
+<cb>@media (min-width: 992px) {
+	<v>...<>
+}<>
+
+Desktops
+992px and Up
+
+(Bootstrap Standard)
+
+
+#### Extra Large Devices
+
+<cb>@media (min-width: 1200px) {
+	<v>...<>
+}<>
+
+Large Desktops
+1200px and Up
+
+(Bootstrap Standard)
+
+
+
+### Media - By Type
+
+<cb>@media <v>media-type<> {
+	<v>...<>
+}<>
+
+<cb>@media <v>media-type-1<>, <v>media-type-2<>, <v>...<> {
+	<v>...<>
+}<>
+
+
+<c><v>media-type<><>  <s>-<>  <c>All<>  <s>|<>  <c>Print<>  <s>|<>  <c>Screen<>  <s>|<>  <c>Speech<>
+
+
+Example:
+
+<cb>@media print {
+	div.spacer {
+		height: 10px; clear: both;
+	}
+}<>
+
+
+# Position
+
+position	[ absolute | fixed | relative ]
+	Position type.
+	Default is static.
+
+	Absolute	- Relative to first non static parent or to <html> if none.
+	Fixed	- Relative to browser window.
+	Relative	- Relative to normal position.
+	Static	- Normal flow
+
+left	units
+	Position from left side in any unit.
+
+right	units
+	Position from right side in any unit.
+
+top	units
+	Position from top in any unit.
+
+bottom	units
+	Position from bottom in any unit
+
+	ex:
+	top: 5px;
+	right: 0px;
+
+
+
+# Flexbox
+@
+@ flex box
+
+
+## Summary
+
+Link:
+<l>https://css-tricks.com/snippets/css/a-guide-to-flexbox/<>
+
+
+
+### Flex Container
+
+The flexbox container that contains the items.
+
+<cb>display: flex;<>
+
+<cb>flex: <v>grow<> <v>shrink<> <v>basis<>;<>
+
+	<c><v>grow<><>		0  <s>|<>  1		How much an item will grow relative to neighbours.
+	<c><v>shrink<><>		0  <s>|<>  1		How much an item will shrink relative to neighbours.
+
+	<c><v>basis<><>		auto  <s>|<>  inherit  <s>|<>  <v>value<>%
+	<c><v>basis<><>		<v>value<>%  <s>|<>  <v>value<>px  <s>|<>  <v>value<>em
+
+
+### Flex Items
+
+The child items contained within the flexbox.
+
+
+
+### Flex Size (flex-basis)
+
+<cb>flex-basis: 0;<>
+
+<cb>flex-basis: 10px;<>
+
+<cb>flex-basis: auto;<>
+
+<!>Review from:
+<l>https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis<>
+
+
+
+### Main Axis
+
+The main direction a flex control is stacked.
+
+Row - Main Axis = Horizontal Stacking
+Column - Main Axis = Vertical Stacking
+@
+@ main-axis
+
+
+
+### Cross Axis
+The cross direction or size of a flex control.
+
+Row - Cross Axis = Vertical (Height)
+Column - Cross Axis = Horizontal (Width)
+@
+@ cross-axis
+
+
+
+## Details
+
+
+
+### Flex Container - Define
+
+<cb>display: flex;<>
+@
+@ display flex, create, new
+
+
+### Flex Container - Direction (flex-direction)
+
+<cb>flex-direction: <v>flex-direction<>;<>
+
+
+<c><v>flex-direction<><>  <s>-<>  <c>row<>  <s>|<>  <c>row-reverse<>  <s>|<>  <c>column<>  <s>|<>  <c>column-reverse<>
+
+	<c>row<>					Left To Right			<#>(Default)<>
+	<c>row-reverse<>			Right To Left
+	<c>column<>				Top To Bottom
+	<c>column-reverse<>		Bottom To Top 
+@
+@ flex-direction, column-reverse, row-reverse
+@ Top To Bottom, Left To Right, Vertical, Horizortal, Set
+
+
+
+### Flex Container - Wrap (flex-wrap)
+
+<cb>flex-wrap: <v>wrap-type<>;<>
+
+
+<c><v>wrap-type<><>  <s>-<>  <c>wrap<>  <s>|<>  <c>wrap-reverse<>  <s>|<>  <c>no-wrap<>
+
+	<c>wrap<>				Wrap Top To Bottom
+	<c>wrap-reverse<>		Wrap Bottom To Top
+	<c>no-wrap<>				No Wrap				<#>(Default)<>
+
+
+Causes the line to wrap when the line becames shorter than the minimum elements width.
+
+<c>no-wrap<> forces items to remain on the same row / column.
+@
+@ flex-wrap, wrap-reverse, no-wrap
+@ Top To Bottom, Left To Right, Vertical, Horizortal
+
+
+
+### Flex Container - Flow (flex-flow)
+
+<cb>flex-flow: <v>flex-direction<> <v>wrap-type<>;<>
+
+
+Combines <c>flex-direction<> and <c>flex-wrap<> in one attribute.
+@
+@ flex-flow
+@ Direction, Wrap, No Wrap, Reverse, Row, Column, row-reverse, column-reverse, wrap-reverse
+
+
+
+### Flex Container - Align Items Main Axis (justify-content)
+
+<cb>justify-content: <v>justify-type<>;<>
+
+
+<c><v>justify-type<><>  <s>-<>  <c>flex-start<>  <s>|<>  <c>flex-end<>  <s>|<>  <c>center<>  <s>|<>  <c>space-between<>  <s>|<>  <c>space-around<>
+
+	<c>flex-start<>			From Start							<#>(Default)<>
+	<c>flex-end<>			From End, Working From Last Item To First
+	<c>center<>				Items Centered
+	<c>space-between<>		Space Items Evenly, Starting from Container Edges
+	<c>space-around<> 		Space Items Evenly, Spaces on Edge Side Too
+
+
+Align Items Along Main Axis
+
+Defines how items are packed into a flex container along its main axis.
+@
+@ justify-content
+@ Items, Alignment
+
+
+
+### Flex Container - Align Items Cross Axis (align-items)
+
+<cb>align-items: <v>alignment-type<>;<>
+
+
+<c><v>alignment-type<><>  <s>-<>  <c>stretch<>  <s>|<>  <c>flex-start<>  <s>|<>  <c>flex-end<>  <s>|<>  <c>center<>  <s>|<>  <c>baseline<>  <s>|<>  <c>space-around<>
+
+	<c>stretch<>				Fill 100% of Space						<#>(Default)<>
+	<c>flex-start<>			Align Top of Cross Axis
+	<c>flex-end<>			Align Bottom of Cross Axis
+	<c>center<>				Center Items Across Cross Axis
+	<c>baseline<>			Match Item Baselines
+
+	<#>Others<>				There are a lot of other options here.
+
+
+Align Items Along Cross Axis
+
+Defines how items are packed into a flex container along its main axis.
+@
+@ align-items
+@ Items, Alignment
+
+
+
+### Flex Item - Fill
+
+<cb>flex-grow: 1;<>
+
+<cb>flex-grow: <v>value<>;<>
+
+
+<c><v>value<><>  <s>-<>  <!>what does this do exactly? Can be 0, 1 or some other value.<>
+
+
+Expands to take as much main axis space as possible.
+If more than one flex item has the same flex-grow value, they are spaced evenly.
+@
+@ Expand
+
+
+
+### Flex Item - Shrink
+
+<cb>flex-shrink: 1;<>
+
+<cb>flex-shrink: 1;<>
+
+<!>What does this do exactly?<>
+@
+@ Expand
+
+
+
+### Flex Items - Align Item Lines Cross Axis (align-content)
+
+<cb>align-content: <v>alignment-type<>;<>
+
+
+<c><v>alignment-type<><>  <s>-<>  <c>stretch<>  <s>|<>  <c>flex-start<>  <s>|<>  <c>flex-end<>  <s>|<>  <c>center<>  <s>|<>  <c>space-between<>  <s>|<>  <c>space-around<>
+
+	<c>stretch<>				Fill 100% of Space						<#>(Default)<>
+	<c>flex-start<>			Pack Lines From Top of Cross Axis
+	<c>flex-end<>			Pack Lines From Bottom of Cross Axis
+	<c>center<>				Center Across Cross Axis
+	<c>space-between<>			Space Lines Evenly, Edge To Edge
+	<c>space-around<>			Space Lines Evenly, With Spacing Along Edges
+
+	<#>Others<>				There are a lot of other options here.
+
+Align Item Lines Along Cross Axis
+
+
+
+
+# Text
+
+
+
+### Text - content
+
+content	'\characterCode'
+
+
+Sets the elements content to the character code included.
+
+content: '\003E';		// Sets the elements content to '>'
+
+
+### Text - text-align
+
+text-align	[ left | center | right ]
+
+
+
+### Text - text-indent
+
+text-indent	<v>units<>
+
+Indent the first line of a paragraph.
+
+
+
+### Text - text-weight
+
+text-weight	normal | bold | bolder | light
+
+100 - 900 						// 400 = normal, 700 = bold
+
+
+
+### Text - line-height
+
+line-height	units
+		Height between lines of text
+
+
+
+### Text - link
+
+link - settings	a {}
+		a:hover {}
+		a:activate {}
+		a:visited {}
+
+
+
+### Text - vertical-align
+
+vertical-align	[ text-top | top | middle | bottom
+
+
+
+### Text - White Space
+
+<cb>white-space: <v>type<>;<>
+
+
+<table><col><c><v>type<><><><col><s>-<><><col><c>normal<>  <s>|<>  <c>nowrap<>  <s>|<>  <c>pre<>  <s>|<>  <c>pre-line<>  <s>|<>  <c>pre-wrap<>  <s>|<>  <c>initial<>  <s>|<>  <c>inherit<><><>
+
+<card><table><col><c>normal<><><col>Collapse Whitespace To Single Space, Wrap Text When Necessary (Default)<>
+<col><c>inherit<><><col>Inherit from Parent<>
+<col><c>initial<><><col>Set to Default<>
+<col><c>nowrap<><><col>Collapse Whitespaces To Single Space, Don't Wrap Text<>
+<col><c>pre<><><col>Preserve whitespcase (spaces, tabs, newlines) (Preformatting)<>
+<col><c>pre-line<><><col>Collapse Whitespaces To Single Space, Wrap Text When Necessary<>
+<col><c>pre-wrap<><><col>Preserve whitespcase, Wrap When Necessary (Preformatting Wrap)<><><>
+@
+@ white-space, Wrap, Tabs, New line, NewLine
+
+
+
+### Text - White Space - Preserve
+
+<cb>white-space: pre;<>
+
+<table><col><c>pre<><><col><s>-<><><col>Preserve whitespcase (spaces, tabs, newlines) (Preformatting)<><>
+@
+@ white-space, Wrap, Tabs, New line, NewLine
+
+
+
+### Text - White Space - Preserve With Word-wrap
+
+<cb>white-space: pre-wrap;<>
+
+<table><col><c>pre-wrap<><><col><s>-<><><col>Preserve whitespcase, Wrap When Necessary (Preformatting Wrap)<><>
+@
+@ white-space, Wrap, Tabs, New line, NewLine
+
+
+
+# Text - Font
+@
+@ fonts
+
+
+
+### Text - Color
+
+<cb>color: <v>value<><>
+
+<c><v>value<><>	-	"<v>color_name<>" | "#<v>RRGGBB<>" | "rgb(<v>red_number<>, green_number<>, <v>blue_number<>)";
+
+Color Names:
+<l>https://en.wikipedia.org/wiki/Web_colors<>
+
+
+
+### Text - Font
+
+<cb>font-family: <v>font-name<>;<>
+@
+@ font-family
+@ Fixed With, monospaced
+
+
+
+### Text - Font - Serif
+
+<cb>font-family: "Times New Roman", Times, serif;<>
+@
+@ font-family
+
+
+
+### Text - Font - San Serif
+
+<cb>font-family: Helvetica, Calibri, sans-serif;<>
+
+Bootstrap List:
+
+<cb>font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"<>
+@
+@ font-family
+
+
+
+### Text - Font - Fixed Width / Monospace
+
+<cb>font-family: monospace;<>
+
+Bootstrap List:
+
+<cb>font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;<>
+@
+@ Fixed With, monospace, font-family
+
+
+
+### Text - Font Size
+
+<cb>font-size: <v>size<><>
+
+
+1em = 12pt = 16px = 100%
+
+
+
+### Text - Font Style
+
+<cb>text-decoration: <v>style<>;<>
+
+<c><v>style<><>  <s>-<>  <c>none<>  <s>|<>  <c>underline<>  <s>|<>  <c>overline<>  <s>|<>  <c>line-through<>
+@
+@ font, styling
+
+
+
+### Text - Font Style
+
+<cb>font-style: <v>style<>;<>
+
+<c><v>style<><>  <s>-<>  <c>normal<>  <s>|<>  <c>italic<>  <s>|<>  <c>oblique<>
+@
+@ styling
+
+
+
+### Text - Font Style - Subscript
+
+<!>Prefer HTML <c>\<sub>\<><> instead!<>
+
+Using CSS will lose important sematic meaning from the content.
+
+But if you must:
+
+<cb>.<v>subscript<> {
+	vertical-align: sub;
+	font-size: 0.83em;
+}<>
+@
+@ styling
+
+
+
+### Text - Font Style - Superscript
+
+<!>Prefer HTML <c>\<sup>\<><> instead!<>
+
+Using CSS will lose important sematic meaning from the content.
+
+But if you must:
+
+<cb>.<v>superscript<> {
+	vertical-align: super;
+	font-size: 0.83em;
+}<>
+@
+@ styling
+
+
+
+### Text - Font Style
+
+<cb>font-style: <v>style<>;<>
+
+<c><v>style<><>  <s>-<>  <c>normal<>  <s>|<>  <c>italic<>  <s>|<>  <c>oblique<>
+@
+@ styling
+
+
+
+### Text - Font Weight / Bold
+
+font-weight:
+
+			normal | bold | lighter | bolder | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 ;
+
+			400 = normal
+			700 = bold
+
+
+
+# Visibility
+
+
+
+### Visibility - display
+
+display	[ none | … ]
+
+Hides the element and also hides/removes the location and layout.
+
+
+
+### Visibility - visibility
+
+visibility	[ visible | hidden | collapse | inherit ]
+
+Makes an element invisible but keeps the location and layout.
+
+
+
+# How To
+
+
+
+### Input Box - Hide Border
+
+<cb>input {
+	border: none;
+}<>
+
+
+### Text - Select - Disable
+
+Use any of these…
+
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+
+
+<!>Don't Use:<>
+
+-moz-user-select: none;			// Don't use
+-ms-user-select: none;			// Don't use
+user-select: none;				// Depricated
+
+
+# Glossary
+
+
+#### Block Element
+A page element that forces a new line to occur.
+vs: Inline element
+
+
+#### Block Elements - All
+<c>blockquote, div, dl, form, h1...h6, hr, ol, table, ul, li<>
+Everything else is an inline element.
+
+
+#### Box
+CSS treats everything as a box. The box has the following elements (outside to inside) Margin, Border, Padding, Content. Margin, Padding and Content are areas.
+
+
+#### Cascading
+CSS property defined in outer tags cascade down into inner tags unless they are over ridden.
+
+
+#### Class
+Identifies a group or class of similar elements.
+
+css:
+
+<cb>.<v>class-name<><>
+
+<cb>.<v>class-name<> {<v>...<>}<>
+
+html:
+
+<cb>\<<v>...<> class="<v>class-name<>"><v>...<>\</<v>...<>><>
+
+
+
+#### ID
+Identifies an individual element.
+
+css:	
+
+<cb>#<v>id-name<><>
+
+<cb>#<v>id-name<> {<v>...<>}<>
+
+html:
+
+<cb>\<<v>...<> id="<v>id1<>"><v>...<>\</<v>...<>><>
+
+
+
+#### Inline Element
+A page element that does not force a new line.
+
+vs: Block Element
+
+
+
+#### Media Query Breakpoint
+
+<!>Need a better definition here.<>
+
+Defines a screen size or device that then dictates how the page should be layed out for that.
+
+
+
+#### Positioning
+4 types - static, fixed, relative, absolute.
+
+
+#### Positioning - Absolute
+Positions are relative to the first parent element that has a position other than static.
+If there is no element, then the position is relative to the html block.
+
+
+#### Positioning - Fixed
+Positions are relative to the browser window.
+Fixed positions can overlap.
+
+
+#### Positioning - Relative
+Positioned relative to its normal position.
+
+
+#### Positioning - Static
+Default. Follows the normal flow of the page.
+Not affected by: top, bottom, left, right properties.
+
+
+#### Pseudo-Class
+A selector based on special information not contained in the document. Examples hover, first element
+
+
+
+#### Responsive Web Design
+
+<!>Need a better definition and theory here.<>
+
+Ingredients
+
+	Media Queries
+	Fluid Grids
+	Flexible Images
+
+
+
+#### Selector
+Declares what part of the markup a style is applied to.
+Includes classes, ids, pseudo-classes and elements.
+
+
+#### Style
+A group of tags and styling types to be applied to a particular html item
+
+
+#### Style Tag
+A tag is defined in a css style block and it describes a type of styling to apply to a html element.
+eg: background-color
+
+
