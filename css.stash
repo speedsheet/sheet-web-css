@@ -669,12 +669,34 @@ Example:
 
 
 
-# Text - Alignment
+# Text - Alignment - Horizontal
+
+<cb>text-align: [ left | right | center ]<>
+
+Also aligns images.
+@
+@ image, left, right, center, middle, text-align, horizontally
 
 
-text-align	[ left | right | center ]
-vertical-align	[ text-top | middle | text-bottom ]		// Other tags too.
-word-wrap	[ break-word ]
+
+# Text - Alignment - Vertical
+
+<cb>vertical-align: [ text-top | middle | text-bottom ]<>
+
+Also aligns images.
+
+<m>(add all tags. there are more)<>
+@
+@ image, text-top, middle, text-bottom, center, vertical-align, vertically,
+
+
+
+# Text - Alignment - Word Wrap
+
+<cb>word-wrap: [ break-word ]<>
+@
+@ image, word-wrap, break-word
+
 
 
 # Text - Alignment - No Word Wrap
@@ -921,9 +943,13 @@ separated is the default.
 <c><v>shadow-type<><>  <s>-<>   <c>horizontal-offset<>  <s>|<>  <c>vertical-offset<>  <s>|<>  <c>blur<>  <s>|<>  <c>blurWidth<>  <s>|<>  <c>color<>
 
 
-Example:
+Examples:
+
+<cb>box-shadow: none;<>
 
 <cb>box-shadow: 2px 2px 5px 3px 5px #C0C0C0;<>
+@
+@ box-shadow
 
 
 
@@ -1032,6 +1058,18 @@ Example:
 ### Padding - Set Right
 
 <cb>padding-right: <v>size<>;<>
+
+
+
+### Outline
+
+<cb>outline: <v>settings<>;<>
+
+Examples:
+
+<cb>outline: none;<>
+@
+@ focus, active, selected
 
 
 
@@ -2001,17 +2039,31 @@ font-weight:
 
 ### Visibility - display
 
-display	[ none | … ]
+<cb>display: <v>value<><>
 
-Hides the element and also hides/removes the location and layout.
+<cb>display: [ none | inline | block | inline-block ]<>
+
+<table><col><c>none<><><col>Hides the element.
+Also hides/removes the location and layout.<>
+<col><c>block<><><col>Display as a block.<>
+<col><c>inline<><><col>Display inline.<>
+<col><c>inline-block<><><col>Display as an inline block.<><>
 
 
 
 ### Visibility - visibility
 
-visibility	[ visible | hidden | collapse | inherit ]
+<cb>visibility: <v>value<><>
 
-Makes an element invisible but keeps the location and layout.
+<cb>visibility [ visible | hidden | collapse | inherit ]<>
+
+<table><col><c>collapse<><><col> <>
+<col><c>hidden<><><col>Makes an element invisible.
+Keeps the location and layout.<>
+<col><c>inherit<><><col> <>
+<col><c>visible<><><col> <><>
+
+
 
 
 
