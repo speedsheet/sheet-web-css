@@ -366,8 +366,6 @@ Examples!<>
 
 ### Selector - Class
 
-CSS:
-
 <cb>.<v>class-name<> {
 	<v>...<>
 }<>
@@ -383,8 +381,6 @@ Identifies a style for a group of related elements.
 
 
 ### Selector - Element
-
-CSS:
 
 <cb><v>element1<> {
 	<v>...<>
@@ -408,8 +404,6 @@ Example:
 
 
 ### Selector - ID
-
-CSS:
 
 <cb>#<v>id-name<> {
 	<v>...<>
@@ -669,44 +663,6 @@ Example:
 
 
 
-# Text - Alignment - Horizontal
-
-<cb>text-align: [ left | right | center ]<>
-
-Also aligns images.
-@
-@ image, left, right, center, middle, text-align, horizontally
-
-
-
-# Text - Alignment - Vertical
-
-<cb>vertical-align: [ text-top | middle | text-bottom ]<>
-
-Also aligns images.
-
-<m>(add all tags. there are more)<>
-@
-@ image, text-top, middle, text-bottom, center, vertical-align, vertically,
-
-
-
-# Text - Alignment - Word Wrap
-
-<cb>word-wrap: [ break-word ]<>
-@
-@ image, word-wrap, break-word
-
-
-
-# Text - Alignment - No Word Wrap
-
-<cb>white-space: nowrap;<>
-
-Works with headings too.
-
-
-
 # Background
 
 
@@ -851,11 +807,11 @@ Must have a specified height.
 
 ## Overview
 
-Margin [ Border [ Padding [] ] ]
+<card>Margin [ Border [ Padding [] ] ]<>
 	
 Margin	Outside border. Transparent
 Border
-Padding	White spacing between border and content. Background color.
+Padding	White space between border and content. Background color.
 
 Note: Margins do not apply inside tables. TR, TH, TD will not be affected.
 
@@ -1798,57 +1754,87 @@ Align Item Lines Along Cross Axis
 
 
 
-### Text - content
+### Text - Alignment - Horizontal
 
-content	'\characterCode'
+<cb>text-align: [ left | right | center ]<>
 
-
-Sets the elements content to the character code included.
-
-content: '\003E';		// Sets the elements content to '>'
-
-
-### Text - text-align
-
-text-align	[ left | center | right ]
+Also aligns images.
+@
+@ image, left, right, center, middle, text-align, horizontally
 
 
 
-### Text - text-indent
+### Text - Alignment - Vertical
 
-text-indent	<v>units<>
+<cb>vertical-align: [ text-top | middle | text-bottom ]<>
+
+Also aligns images.
+
+<m>(add all tags. there are more)<>
+@
+@ image, text-top, middle, text-bottom, center, vertical-align, vertically,
+
+
+
+### Text - Alignment - Word Wrap
+
+<cb>word-wrap: [ break-word ]<>
+@
+@ image, word-wrap, break-word
+
+
+
+### Text - Alignment - No Word Wrap
+
+<cb>white-space: nowrap;<>
+
+Works with headings too.
+@
+@ white-space, nowrap
+
+
+
+### Text - Set Content Character
+
+<cb>content	'\\<v>character_code<>'<>
+
+Usage:
+
+<cb>content	'\\<v>FFFF<>'<>
+
+
+Sets the element's content to the character for the given code.
+
+
+Set To '>':
+
+<cb>{
+    content: '\\<v>003E<>';
+}<>
+@
+@ content, '\\', hex value
+
+
+
+### Text - Indent
+
+<cb>text-indent <v>units<><>
+
 
 Indent the first line of a paragraph.
+@
+@ text-indent, indentation
 
 
 
-### Text - text-weight
+### Text - Line Height
 
-text-weight	normal | bold | bolder | light
-
-100 - 900 						// 400 = normal, 700 = bold
+<cb>line-height <v>units<><>
 
 
-
-### Text - line-height
-
-line-height	units
-		Height between lines of text
-
-
-
-### Text - link
-
-link - settings	a {}
-		a:hover {}
-		a:activate {}
-		a:visited {}
-
-
-
-### Text - vertical-align
-
-vertical-align	[ text-top | top | middle | bottom
+Defines the height between lines of text.
+@
+@ line-height
 
 
 
@@ -1856,18 +1842,18 @@ vertical-align	[ text-top | top | middle | bottom
 
 <cb>white-space: <v>type<>;<>
 
-
 <table><col><c><v>type<><><><col><s>-<><><col><c>normal<>  <s>|<>  <c>nowrap<>  <s>|<>  <c>pre<>  <s>|<>  <c>pre-line<>  <s>|<>  <c>pre-wrap<>  <s>|<>  <c>initial<>  <s>|<>  <c>inherit<><><>
 
-<card><table><col><c>normal<><><col>Collapse Whitespace To Single Space, Wrap Text When Necessary (Default)<>
+<card><table><col><c>normal<><><col>Collapse White Space To Single Space, Wrap Text When Necessary (Default)<>
 <col><c>inherit<><><col>Inherit from Parent<>
 <col><c>initial<><><col>Set to Default<>
-<col><c>nowrap<><><col>Collapse Whitespaces To Single Space, Don't Wrap Text<>
-<col><c>pre<><><col>Preserve whitespcase (spaces, tabs, newlines) (Preformatting)<>
-<col><c>pre-line<><><col>Collapse Whitespaces To Single Space, Wrap Text When Necessary<>
-<col><c>pre-wrap<><><col>Preserve whitespcase, Wrap When Necessary (Preformatting Wrap)<><><>
+<col><c>nowrap<><><col>Collapse White Space To Single Space, Don't Wrap Text<>
+<col><c>pre<><><col>Preserve White Space (spaces, tabs, newlines) (Preformatting)<>
+<col><c>pre-line<><><col>Collapse White Space To Single Space, Wrap Text When Necessary<>
+<col><c>pre-wrap<><><col>Preserve White Space, Wrap When Necessary (Preformatting Wrap)<><><>
 @
-@ white-space, Wrap, Tabs, New line, NewLine
+@ white-space, normal, inherit, initial, nowrap, pre, pre-line, pre-wrap
+@ Wrap, Tabs, New line, NewLine, whitespace, spaces
 
 
 
@@ -1875,9 +1861,12 @@ vertical-align	[ text-top | top | middle | bottom
 
 <cb>white-space: pre;<>
 
-<table><col><c>pre<><><col><s>-<><><col>Preserve whitespcase (spaces, tabs, newlines) (Preformatting)<><>
+<card><table><col><c>pre<>		<><col>Preserve White Space
+(spaces, tabs, newlines) (Preformatting)<><><>
 @
-@ white-space, Wrap, Tabs, New line, NewLine
+@ white-space, pre
+@ Wrap, Tabs, New line, NewLine, whitespace, spaces
+@ preformatting, preserve
 
 
 
@@ -1885,10 +1874,12 @@ vertical-align	[ text-top | top | middle | bottom
 
 <cb>white-space: pre-wrap;<>
 
-<table><col><c>pre-wrap<><><col><s>-<><><col>Preserve whitespcase, Wrap When Necessary (Preformatting Wrap)<><>
+<card><table><col><c>pre-wrap<>	<><col>Preserve White Spase, Wrap When Necessary
+(Preformatting Wrap)<><><>
 @
-@ white-space, Wrap, Tabs, New line, NewLine
-
+@ white-space, pre-wrap
+@ Wrap, Tabs, New line, NewLine, whitespace, spaces
+@ preformatting
 
 
 # Text - Font
@@ -1960,29 +1951,34 @@ Bootstrap List:
 
 ### Text - Font Style
 
-<cb>text-decoration: <v>style<>;<>
-
-<c><v>style<><>  <s>-<>  <c>none<>  <s>|<>  <c>underline<>  <s>|<>  <c>overline<>  <s>|<>  <c>line-through<>
-@
-@ font, styling
-
-
-
-### Text - Font Style
-
 <cb>font-style: <v>style<>;<>
 
-<c><v>style<><>  <s>-<>  <c>normal<>  <s>|<>  <c>italic<>  <s>|<>  <c>oblique<>
+<c>style<>:
+
+<cb><c>normal<> <s>|<> <c>italic<> <s>|<> <c>oblique<><>
 @
-@ styling
+@ styling, font-style
+
+
+
+### Text - Font Style / Text Decorator
+
+<cb>text-decoration: <v>style<>;<>
+
+<c>style<>:
+
+<cb><c>none<> <s>|<> <c>underline<> <s>|<> <c>overline<> <s>|<> <c>line-through<><>
+@
+@ font, styling, decoration
+@ text-decoration, none, underline, overline, line-through
 
 
 
 ### Text - Font Style - Subscript
 
-<!>Prefer HTML <c>\<sub>\<><> instead!<>
+Prefer HTML:
 
-Using CSS will lose important sematic meaning from the content.
+<cb>\<sub><v>text<>\<><>
 
 But if you must:
 
@@ -1990,16 +1986,18 @@ But if you must:
 	vertical-align: sub;
 	font-size: 0.83em;
 }<>
+
+Using CSS will lose important sematic meaning from the content.
 @
-@ styling
+@ styling, vertical-align, sub
 
 
 
 ### Text - Font Style - Superscript
 
-<!>Prefer HTML <c>\<sup>\<><> instead!<>
+Prefer HTML:
 
-Using CSS will lose important sematic meaning from the content.
+<cb>\<sup><v>text<>\<><>
 
 But if you must:
 
@@ -2007,29 +2005,27 @@ But if you must:
 	vertical-align: super;
 	font-size: 0.83em;
 }<>
+
+Using CSS will lose important sematic meaning from the content.
 @
 @ styling
-
-
-
-### Text - Font Style
-
-<cb>font-style: <v>style<>;<>
-
-<c><v>style<><>  <s>-<>  <c>normal<>  <s>|<>  <c>italic<>  <s>|<>  <c>oblique<>
-@
-@ styling
+@ vertical-align, super
 
 
 
 ### Text - Font Weight / Bold
 
-font-weight:
+<cb>font-weight: <v>value<>;<>
 
-			normal | bold | lighter | bolder | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 ;
+<c>value<>:
 
-			400 = normal
-			700 = bold
+<cb>normal <s>|<> bold <s>|<> lighter <s>|<> bolder <s>|<> 100 <s>|<> 200 <s>|<> 300 <s>|<> 400 <s>|<> 500 <s>|<> 600 <s>|<> 700 <s>|<> 800 <s>|<> 900<>
+
+400 = normal
+700 = bold
+@
+@ font-weight, normal, bold, lighter, bolder
+@ 100, 200, 300, 400, 500, 600, 700, 800, 900
 
 
 
@@ -2068,6 +2064,53 @@ Keeps the location and layout.<>
 
 
 # How To
+
+
+### Block / Div - Center Horizontally
+
+<cb>.<v>center<> {
+	margin: auto;
+}<>
+
+
+Horizontally centers a block inside it's container.
+
+
+Center Inner Div:
+
+<in-2>CSS:
+
+<cb>\<style>
+
+	div {
+		border-radius: 5px;
+		padding: 2em;
+	}
+
+	.<v>outer<> {
+		background-color: #888;
+		width: 400px;
+		height: 250px;
+	}
+
+	.<v>inner<> {
+		background-color: #444;
+		width: 100px;
+		height: 100px;
+	}
+
+	.<v>center-horizontally<> {
+		margin: auto;
+	}
+
+\</style><>
+
+HTML:
+
+<cb>\<div class="<v>outer<>">
+	\<div class="<v>inner<> <v>center-horizontally<>">
+	\</div>
+\</div><><>
 
 
 
