@@ -566,8 +566,11 @@ Example:
 <cb>:link {
 	<v>...<>
 }<>
+
+Selects <c>\<a><> element.
 @
 @ :link
+@ \<a>, href, url
 
 
 
@@ -576,8 +579,11 @@ Example:
 <cb>:visited {
 	<v>...<>
 }<>
+
+Selects <c>\<a><> element when the link has been visited.
 @
 @ :visited
+@ \<a>, href, url
 
 
 
@@ -586,8 +592,11 @@ Example:
 <cb>:hover {
 	<v>...<>
 }<>
+
+Selects <c>\<a><> element when the mouse hovers over the link.
 @
 @ :hover
+@ \<a>, href, url
 
 
 
@@ -622,7 +631,9 @@ Sets <c><v>property<><> to the value of <c>--<v>variable-name-1<><>.
 
 
 
-# Transititons
+# Transitions
+@
+@ animations
 
 
 ### Transitions Basics
@@ -874,7 +885,7 @@ separated is the default.
 
 <cb>border: none;<>
 @
-@ None
+@ None, invisible
 
 
 
@@ -1148,6 +1159,30 @@ Full Color List:
 
 
 
+### Color - Units - HSL / HSLA
+
+<cb>hsl(<v>hue<>, <v>saturation<>%, <v>lightness<>%)<>
+
+<cb>hsla(<v>hue<>, <v>saturation<>%, <v>lightness<>%)<>
+
+
+<c><v>hue<><>				0 - 360
+<c><v>saturation<><>		0% - 100%
+<c><v>lightness<><>		0% - 100%		Black (0%) - White (100%)
+<c><v>alpha<><>			0.0 - 1.0			Transparant (0) - Opaque (1)
+
+
+Example:
+
+<cb>button {
+	<#>/* Navy Blue */<>
+	background: hsa(240, 100%, 25%, 0.75);
+}<>
+@
+@ hsl()
+
+
+
 ### Color - Units - RGB / RGBA
 
 <cb>rgb(<v>red<>, <v>green<>, <v>blue<>)<>
@@ -1158,7 +1193,7 @@ Full Color List:
 <c><v>red<><>				0 - 255
 <c><v>green<><>			0 - 255
 <c><v>blue<><>			0 - 255
-<c><v>alpha<><>			0.0 (Transparent) - 1.0 (Opaque)
+<c><v>alpha<><>			0.0 - 1.0		Transparant (0) - Opaque (1)
 
 
 Example:
@@ -1166,6 +1201,8 @@ Example:
 <cb>button {
 	background: rgba(255, 255, 255, 0.5);
 }<>
+@
+@ rgb(), rgba()
 
 
 
@@ -2030,6 +2067,8 @@ Using CSS will lose important sematic meaning from the content.
 
 
 # Visibility
+@
+@ hide, show, invisible
 
 
 
@@ -2044,6 +2083,8 @@ Also hides/removes the location and layout.<>
 <col><c>block<><><col>Display as a block.<>
 <col><c>inline<><><col>Display inline.<>
 <col><c>inline-block<><><col>Display as an inline block.<><>
+@
+@ display, block, inline, inline-block, none
 
 
 
@@ -2058,8 +2099,8 @@ Also hides/removes the location and layout.<>
 Keeps the location and layout.<>
 <col><c>inherit<><><col> <>
 <col><c>visible<><><col> <><>
-
-
+@
+@ visibility, visible, hidden, collapse, inherit
 
 
 
