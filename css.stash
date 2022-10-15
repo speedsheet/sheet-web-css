@@ -497,6 +497,45 @@ Applies to direct <c><v>child-selector<><> children inside <c><v>parent-selector
 
 
 
+### Selector - Input
+
+<cb>input[type="button"]
+input[type="checkbox"]
+input[type="color"]
+input[type="date"]
+input[type="datetime-local"]
+input[type="email"]
+input[type="file"]
+input[type="hidden"]
+input[type="image"]
+input[type="month"]
+input[type="number"]
+input[type="password"]
+input[type="radio"]
+input[type="range"]
+input[type="reset"]
+input[type="search"]
+input[type="submit"]
+input[type="tel"]
+input[type="text"]
+input[type="time"]
+input[type="url"]
+input[type="week"]<>
+
+Attribute Type Not Present:
+
+<cb>input:not([type])<>
+
+Attribute Type Is Empty:
+
+<cb>input:[type=""]<>
+@
+@ input type =, box
+@ button, checkbox, color, date, datetime-local, email, file, hidden, image, month, number, password, radio, range, reset, search, submit, tel, text, time, url, week
+@ @ input[type="button"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="hidden"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="range"], input[type="reset"], input[type="search"], input[type="submit"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"]
+
+
+
 ## Pseudo Classes
 
 
@@ -515,6 +554,10 @@ Applies to direct <c><v>child-selector<><> children inside <c><v>parent-selector
 <cb>:nth-child(<v>n<>) {
 	<v>...<>
 }<>
+
+The nth element of a type.
+
+The first element is 1 (not 0).
 @
 @ :nth-child
 
@@ -567,7 +610,7 @@ Example:
 	<v>...<>
 }<>
 
-Selects <c>\<a><> element.
+Styles the <c>\<a><> element.
 @
 @ :link
 @ \<a>, href, url
@@ -580,10 +623,36 @@ Selects <c>\<a><> element.
 	<v>...<>
 }<>
 
-Selects <c>\<a><> element when the link has been visited.
+Styles the <c>\<a><> element when the link has been visited.
 @
 @ :visited
 @ \<a>, href, url
+
+
+
+### Selector - Active
+
+<cb>:active {
+	<v>...<>
+}<>
+
+Styles an element when it is being clicked.
+@
+@ :active
+@ \<a>, href, url, clicked
+
+
+
+### Selector - Focus
+
+<cb>:focus {
+	<v>...<>
+}<>
+
+Styles an element when it has focus.
+@
+@ :focus
+@ \<a>, href, url, current
 
 
 
@@ -593,7 +662,7 @@ Selects <c>\<a><> element when the link has been visited.
 	<v>...<>
 }<>
 
-Selects <c>\<a><> element when the mouse hovers over the link.
+Sthyles an element when the mouse hovers over it.
 @
 @ :hover
 @ \<a>, href, url
@@ -820,9 +889,15 @@ Must have a specified height.
 
 <card>Margin [ Border [ Padding [] ] ]<>
 	
-Margin	Outside border. Transparent
-Border
-Padding	White space between border and content. Background color.
+<table><col>Margin<><col>Outside Border
+Transparent<>
+<col> <>
+<col>Border<><col>Between Margin and Padding<>
+<col> <>
+<col>Padding<><col>White space between border and content.
+Background Color<>
+<col> <>
+<col>Parameter Order<><col>Top Right Bottom Left<><>
 
 Note: Margins do not apply inside tables. TR, TH, TD will not be affected.
 
@@ -1396,6 +1471,8 @@ Example:
 <c>a:hover {text-decoration: underline; }<>
 
 <c>a:active {text-decoration: underline; }<>
+@
+@ clicked, :link, :visited: :hover, :focus, :active
 
 
 
@@ -1425,7 +1502,8 @@ Note: <c><v>...-alpha<><> and <c><v>...-latin<><> are the same
 
 Applies to <c>\<ol><> <c>\<li><> html tags.
 @
-@ ol, li, numbered, styling, none
+@ ol, li, numbered, styling
+@ none, decimal, decimal-leading-zero, lower-alpha, upper-alpha, lower-greek, lower-roman, upper-roman
 
 
 
@@ -1449,6 +1527,23 @@ Applies to <c>\<ul><> <c>\<li><> html tags.
 # Media
 @
 @ Responsive, Responsiveness, Break
+@ media-only, \@media
+
+
+
+### Media - By Color Scheme
+
+<cb>@media (prefers-color-scheme: light) {
+	<v>...<>
+}<>
+
+<cb>@media (prefers-color-scheme: dark) {
+	<v>...<>
+}<>
+
+Sets the color scheme (light or dark) based on the OS settings.
+@
+@ colour, prefers-color-scheme, light, dark
 
 
 
@@ -1457,7 +1552,8 @@ Applies to <c>\<ul><> <c>\<li><> html tags.
 <cb>@media (min-width: <v>units<>) {
 	<v>...<>
 }<>
-
+@
+@ min-width
 
 
 #### Small Devices
@@ -1472,6 +1568,7 @@ Landscape Phones
 (Bootstrap Standard)
 
 
+
 #### Medium Devices
 
 <cb>@media (min-width: 768px) {
@@ -1484,6 +1581,7 @@ Tablets
 (Bootstrap Standard)
 
 
+
 #### Large Devices
 
 <cb>@media (min-width: 992px) {
@@ -1494,6 +1592,7 @@ Desktops
 992px and Up
 
 (Bootstrap Standard)
+
 
 
 #### Extra Large Devices
@@ -1520,7 +1619,7 @@ Large Desktops
 }<>
 
 
-<c><v>media-type<><>  <s>-<>  <c>All<>  <s>|<>  <c>Print<>  <s>|<>  <c>Screen<>  <s>|<>  <c>Speech<>
+<c><v>media-type<><>  <s>-<>  <c>all<>  <s>|<>  <c>print<>  <s>|<>  <c>screen<>  <s>|<>  <c>speech<>
 
 
 Example:
@@ -1530,40 +1629,140 @@ Example:
 		height: 10px; clear: both;
 	}
 }<>
+@
+@ all, print, screen, speech
+
 
 
 # Position
+@
+@ absolute, position:
+@ position-only, pos-only
 
-position	[ absolute | fixed | relative ]
-	Position type.
-	Default is static.
 
-	Absolute	- Relative to first non static parent or to <html> if none.
-	Fixed	- Relative to browser window.
-	Relative	- Relative to normal position.
-	Static	- Normal flow
+## Relative Positions
 
-left	units
-	Position from left side in any unit.
+Make the element absolute, then set the distance away from the border.
 
-right	units
-	Position from right side in any unit.
+Example Top Right:
 
-top	units
-	Position from top in any unit.
+<cb>.top-right {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+}<>
+@
+@ relative-only
 
-bottom	units
-	Position from bottom in any unit
 
-	ex:
-	top: 5px;
-	right: 0px;
+### Position - Relative To Bottom
+
+<cb>position: absolute;
+bottom: <v>units-from-bottom<>;<>
+
+
+Positions an element from the bottom.
+
+The default is relative to the browser window.
+@
+@ bottom:
+
+
+
+### Position - Relative To Left
+
+<cb>position: absolute;
+left: <v>units-from-left<>;<>
+
+
+Position from left side in any unit.
+
+The default is relative to the browser window.
+@
+@ left:
+
+
+
+### Position - Relative To Right
+
+<cb>position: absolute;
+right: <v>units-from-right<>;<>
+
+
+Position from right side in any unit.
+
+The default is relative to the browser window.
+@
+@ right:
+
+
+
+### Position - Relative To Top
+
+<cb>position: absolute;
+top: <v>units-from-top<>;<>
+
+
+Positions an element from the top.
+
+The default is relative to the browser window.
+@
+@ top:
+
+
+
+### Position - Relative Center Horizontally
+
+<cb>position: absolute;
+left: 50%;
+transform: translateX(-50%)<>
+
+
+
+### Position - Relative Center Vertically
+
+<cb>position: absolute;
+left: 50%;
+transform: translateX(-50%)<>
+
+
+## Position Types
+
+<cb>position:	[ static | absolute | fixed | relative ]<>
+
+
+Defines the position type to be used to place elements.
+
+The default is static.
+
+Types
+
+<card><table><col>Absolute<><col>Relative to first non static parent or to \<html> if none.<>
+<col>Fixed<><col>Relative to browser window.<>
+<col>Relative<><col>Relative to normal position.<>
+<col>Static<><col>Normal flow<><><>
+
+
+
+### Position Type - Relative to Parent
+
+<cb>.<v>parent<> {
+	position: relative;
+}
+
+.<v>child<> {
+	position: absolute;
+	<#>/* Dimensions go next. */<>
+	<v>...<>
+}<>
+@
+@ position: relative
 
 
 
 # Flexbox
 @
-@ flex box
+@ flex box, flex-only, flex-box-only, flexbox-only
 
 
 ## Summary
@@ -2121,37 +2320,61 @@ Center Inner Div:
 
 <in-2>CSS:
 
-<cb>\<style>
+<cb>div {
+	border-radius: 5px;
+	padding: 2em;
+}
 
-	div {
-		border-radius: 5px;
-		padding: 2em;
-	}
+.<v>container<> {
+	background-color: #888;
+	width: 400px;
+	height: 250px;
+}
 
-	.<v>outer<> {
-		background-color: #888;
-		width: 400px;
-		height: 250px;
-	}
+.<v>content<> {
+	background-color: #444;
+	width: 100px;
+	height: 100px;
+}
 
-	.<v>inner<> {
-		background-color: #444;
-		width: 100px;
-		height: 100px;
-	}
-
-	.<v>center-horizontally<> {
-		margin: auto;
-	}
-
-\</style><>
+.<v>center-horizontally<> {
+	margin: auto;
+}<>
 
 HTML:
 
-<cb>\<div class="<v>outer<>">
-	\<div class="<v>inner<> <v>center-horizontally<>">
+<cb>\<div class="<v>container<>">
+	\<div class="<v>content<> <v>center-horizontally<>">
 	\</div>
 \</div><><>
+@
+@ text, content, container, div
+
+
+
+### Block / Div - Center Horizontally and Vertically
+
+CSS:
+
+<cb>.<v>container<> {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}<>
+
+HTML:
+
+<cb>\<div class="<v>container<>">
+	\<div class="<v>content<>">
+		<v>Content<>
+	\</div>
+\</div><>
+
+
+
+Use Flexbox and a div embedded in a div to center horizontally and vertically.
+@
+@ text, content, container, div, flexbox
 
 
 
