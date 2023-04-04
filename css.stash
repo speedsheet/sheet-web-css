@@ -1,5 +1,5 @@
 # <#>CSS<> SpeedSheet
-<b>Find what you need, faster.<>
+<b>Find it faster.<>
 
 
 
@@ -142,6 +142,8 @@ The current media type overrides all other media types.
 
 #### !important
 
+<cb><v>property<>: <v>value<> !important;<>
+
 <c>!important<> supercedes all other settings.
 
 
@@ -253,6 +255,7 @@ Example:
 <cb>\<div style="<v>text-align:left;<>"><v>...<><>
 @
 @ Style, Styling, Element
+@ style=""
 
 
 
@@ -272,6 +275,8 @@ Example:
 \</style><>
 @
 @ Style, Styling
+@ \<style>
+
 
 
 
@@ -290,6 +295,7 @@ Example:
 \</head><>
 @
 @ Include, Import from, Style, Styling, head, header
+@ \<link>, rel="", href=""
 
 
 
@@ -301,6 +307,7 @@ Example:
 Incorporates styles from another css file into this one.
 @
 @ Include, Import
+@ \@import, url()
 
 
 
@@ -475,25 +482,52 @@ Insert something before the content.
 
 ### Selector - Children - All Descendants
 
+All:
+
+<cb><v>parent-selector<> * {
+	<v>...<>
+}<>
+
+Subset:
+
 <cb><v>parent-selector<> <v>child-selector<> {
 	<v>...<>
 }<>
 
 Applies to all <c><v>child-selector<><> children inside <c><v>parent-selector<><>.
+@
+@ *, parent
 
 
 
 ### Selector - Children - Direct Descendants
+
+All:
+
+<cb><v>parent-selector<> > <v>child-selector<> {
+	<v>...<>
+}<>
+
+Subset:
 
 <cb><v>parent-selector<> > <v>child-selector<> {
 	<v>...<>
 }<>
 
 
-Child Selector
+Select the child with the given selector when directly under a parent of the given parent selector.
 
 
 Applies to direct <c><v>child-selector<><> children inside <c><v>parent-selector<><> only.
+
+
+Class Within Class:
+
+<cb>.<v>parent<> > .<v>child<> {
+	<v>...<>
+}<>
+@
+@ >, *, parent
 
 
 
@@ -535,6 +569,19 @@ Attribute Type Is Empty:
 @ @ input[type="button"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="hidden"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="range"], input[type="reset"], input[type="search"], input[type="submit"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"]
 
 
+### Selector - Placeholder
+
+<cb><v>Element<>::placeholder {
+	<v>...<>
+}<>
+
+
+Defines the css properties for the placeholder attribute.
+@
+@ foreground, color, textarea
+@ :placeholder, ::placeholder
+
+
 
 ## Pseudo Classes
 
@@ -545,7 +592,7 @@ Attribute Type Is Empty:
 	<v>...<>
 }<>
 @
-@ 1st, :first-child
+@ 1st, :first-child, first-child
 
 
 
@@ -559,7 +606,34 @@ The nth element of a type.
 
 The first element is 1 (not 0).
 @
-@ :nth-child
+@ :nth-child, nth-child, nth child
+
+
+
+### Selector - Nth Child - Repeating
+
+<cb>:nth-child(<v>2<>n) {
+	<v>...<>
+}<>
+
+Every nth element of a type, repeating.
+
+The first element is 1 (not 0).
+
+
+Every 2nd Child:
+
+<cb><v>selector<>:nth-child(<v>2<>n) {
+	<v>...<>
+}<>
+
+Every 4th Child, Starting at 6 (6, 10, 14 ...):
+
+<cb><v>selector<>:nth-child(<v>4<>n + 2) {
+	<v>...<>
+}<>
+@
+@ :nth-child, nth-child, nth child, even, repeating, n, 2n, 3n, 4n, every other
 
 
 
@@ -569,7 +643,7 @@ The first element is 1 (not 0).
 	<v>...<>
 }<>
 @
-@ :last-child
+@ :last-child, last-child
 
 
 
@@ -579,7 +653,37 @@ The first element is 1 (not 0).
 	<v>...<>
 }<>
 @
-@ 1st, :first-line
+@ 1st, :first-line, first-line
+
+
+
+### Selector - Last Line
+
+<cb>:last-line {
+	<v>...<>
+}<>
+@
+@ :last-line, last-line
+
+
+
+### Selector - All But
+
+<cb><v>selector<>:not(<v>excluded-selector<>) {
+	<v>...<>
+}<>
+
+Includes all matches but the excluded selector type.
+
+
+All But 1st Child:
+
+<cb><v>selector<>:not(first-child) {
+	<v>...<>
+}<>
+@
+@ except, excluding, includes, including
+@ not, :not
 
 
 
@@ -600,7 +704,49 @@ Example:
 	<v>...<>
 }<>
 @
-@ 1st, :first-of-type, type
+@ 1st, :first-of-type, first-of-type, of-type, of type
+
+
+
+### Selector - Last of Selector
+
+<cb><v>selector<>:last-of-type {
+	<v>...<>
+}<>
+
+
+Example:
+
+<cb><v>div<>:last-of-type {
+	<v>...<>
+}<>
+
+<cb>.<v>sidebar<>:last-of-type {
+	<v>...<>
+}<>
+@
+@ :last-of-type, last-of-type, of-type, of type
+
+
+
+### Selector - Only of Selector
+
+<cb><v>selector<>:first-of-type {
+	<v>...<>
+}<>
+
+
+Example:
+
+<cb><v>div<>:first-of-type {
+	<v>...<>
+}<>
+
+<cb>.<v>sidebar<>:first-of-type {
+	<v>...<>
+}<>
+@
+@ :only-of-type, only-of-type, of-type, of type
 
 
 
@@ -675,19 +821,6 @@ Sthyles an element when the mouse hovers over it.
 
 
 
-### Custom Property - Set
-
-<cb>:root {
-	--<v>variable-name-1<>: <v>value<>;
-}<>
-
-Sets the value of the custom property / variable.
-Requires <c>--<> before the variable name.
-@
-@ Create, New
-
-
-
 ### Custom Property - Get
 
 <cb><v>...<> {
@@ -700,9 +833,39 @@ Sets <c><v>property<><> to the value of <c>--<v>variable-name-1<><>.
 
 
 
+### Custom Property - Set
+
+<cb>:root {
+	--<v>variable-name-1<>: <v>value<>;
+}<>
+
+Sets the value of the custom property / variable.
+Requires <c>--<> before the variable name.
+@
+@ Create, New, :root
+
+
+
+### Custom Property - Update
+
+<cb><v>selector<> {
+	--<v>variable-name-1<>: <v>new_value<>;
+}<>
+
+Updates the value of the custom property / variable.
+
+The new variable value will only apply to items matching the selector.
+@
+@ Create, New, :root
+
+
+
 # Transitions
 @
 @ animations
+@ trans-only, transition-only, transitions-only
+@ transition:
+
 
 
 ### Transitions Basics
@@ -739,23 +902,30 @@ Example:
 	width: 100% !important;
 }<>
 @
-@ Important, !important
+@ Important, !important, !
 
 
 
 # Background
+@
+@ background-only, backgrounds-only, backgrounds
+@ colors-only, colours-only
 
 
 
 ### Background - Background Color
 
 <cb>background-color: <v>colour-unit<>;<>
+@
+@ background-color:
 
 
 
 ### Background - Image
 
 <cb>background-image: url(<v>image_path<>);<>
+@
+@ background-image:, url()
 
 
 
@@ -764,6 +934,9 @@ Example:
 <cb>background-position: <v>position-type<>;<>
 
 <c><v>position-type<><>  <s>-<>  left | right | bottom | top | percentage | length
+@
+@ background-position:
+@ left, right, bottom, top, percentage, length
 
 
 
@@ -773,6 +946,9 @@ Example:
 
 
 <c><v>repeat-type<><>  <s>-<>  no-repeat | repeat | repeat-x | repeat-y
+@
+@ background-repeat:
+
 
 
 ### Background - Image Scroll Attachment
@@ -782,6 +958,8 @@ Example:
 
 	Types	fixed						// Image stays fixed while the page scrolls.
 		scroll						// Image scrolls wit the page.
+@
+@ background-attachment:
 
 
 
@@ -794,6 +972,9 @@ Example:
 <cb>clear: <v>clear-type<><>
 
 <c><v>clear-type<><>  <s>-<>  <v>left<>  <s>|<>  <v>right<>  <s>|<>  <v>both<>  <s>|<>  <v>none<>
+@
+@ clear:
+@ left, right, both, none
 
 
 
@@ -810,6 +991,9 @@ Example:
 
 
 Sets how an item should be displayed.. hidden, with line breaks or inline.
+@
+@ display:
+@ none, block, inline, list-item, run-in, compact
 
 
 
@@ -823,6 +1007,9 @@ Sets how an item should be displayed.. hidden, with line breaks or inline.
 
 Used primarily for images and layouts.
 Float left or right only.
+@
+@ float:
+@ left, right, none
 
 
 
@@ -835,7 +1022,9 @@ Float left or right only.
 	<c>scroll<>		Overflow Clipped, Scroll Bars Added
 	<c>auto<>		Overflow Clipped, Scroll Bars When Needed
 @
-@ scroll
+@ overflow
+@ overflow:
+@ visible, hidden, scroll, auto
 
 
 
@@ -856,7 +1045,10 @@ Float left or right only.
 Works on block elements only.
 <!>? Must have a specified width?<>
 @
-@ Overflow
+@ overflow
+@ overflow-x:
+@ visible, hidden, scroll, auto
+
 
 
 ### Block - Overflow - Scroll Y (overflow-y)
@@ -876,7 +1068,10 @@ Works on block elements only.
 Works on block elements only.
 Must have a specified height.
 @
-@ Overflow
+@ overflow
+@ overflow-y:
+@ visible, hidden, scroll, auto
+
 
 
 # Box Styling
@@ -907,8 +1102,7 @@ Note: Margins do not apply inside tables. TR, TH, TD will not be affected.
 
 ## Border
 @
-@ border-only
-
+@ border-only, borders, borders-only
 
 
 ### Border - Set All
@@ -919,6 +1113,8 @@ Note: Margins do not apply inside tables. TR, TH, TD will not be affected.
 Example:
 
 <cb>border: 2px solid red;<>
+@
+@ border:
 
 
 
@@ -931,6 +1127,9 @@ Example:
 
 Sets whether table element borders are separated (detached) or collapsed into one single border.
 separated is the default.
+@
+@ border-collapse:
+@ collapse, separate, inherit
 
 
 ### Border - Border Color
@@ -938,6 +1137,7 @@ separated is the default.
 <cb>border-color: <v>color<><>
 @
 @ colour
+@ border-color:
 
 
 
@@ -946,13 +1146,17 @@ separated is the default.
 <cb>border-style: <v>style<><>
 
 <c><v>style<><>  <s>-<>  <c>none<>  <s>|<>  <c>hidden<>  <s>|<>  <c>dotted<>  <s>|<>  <c>dashed<>  <s>|<>  <c>solid<>  <s>|<>  <c>double<>  <s>|<>  <c>groove<>  <s>|<>  <c>ridge<>  <s>|<>  <c>inset<>  <s>|<>  <c>outset<>
-
+@
+@ border-style:
+@ none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset
 
 
 
 ### Border - Border Width
 
 <cb>border-width: <v>width<><>
+@
+@ border-width:
 
 
 
@@ -960,7 +1164,8 @@ separated is the default.
 
 <cb>border: none;<>
 @
-@ None, invisible
+@ border:
+@ none, invisible
 
 
 
@@ -968,10 +1173,13 @@ separated is the default.
 
 <cb>border-radius: <v>radius<><>
 
+<cb>border-radius: <v>top_left<> <v>top_right<> <v>bottom_right<> <v>bottom_left<><>
+
 
 <c><v>radius<><>  <s>-<>  Width of the radius.
 @
-@ radius, rounded
+@ radius, rounded, corners
+@ border-radius:
 
 
 
@@ -991,13 +1199,15 @@ Examples:
 
 <cb>box-shadow: 2px 2px 5px 3px 5px #C0C0C0;<>
 @
-@ box-shadow
+@ box shadows
+@ box-shadow:
 
 
 
 ## Margin
 @
-@ margin-only
+@ margins
+@ margin-only, margins-only
 
 
 
@@ -1005,9 +1215,9 @@ Examples:
 
 <cb>margin: <v>size<>;<>
 
-<cb>margin: <v>top_and_bottom<> <v>left_and_right<>;<>
+<cb>margin: <v>top-bottom<> <v>left-right<>;<>
 
-<cb>margin: <v>top<> <v>left_and_right<> <v>bottom<>;<>
+<cb>margin: <v>top<> <v>left-right<> <v>bottom<>;<>
 
 <cb>margin: <v>top<> <v>right<> <v>bottom<> <v>left<>;<>
 
@@ -1027,30 +1237,40 @@ Example:
 <cb>p {
 	margin: 16px 0 16px 0;
 }<>
-
+@
+@ margin:
+@ auto
 
 
 
 ### Margin - Set Top
 
 <cb>margin-top: <v>size<>;<>
+@
+@ margin-top:
 
 
 
 ### Margin - Set Bottom
 
 <cb>margin-bottom: <v>size<>;<>
+@
+@ margin-bottom:
 
 
 ### Margin - Set Left
 
 <cb>margin-left: <v>size<>;<>
+@
+@ margin-left:
 
 
 
 ### Margin - Set Right
 
 <cb>margin-right: <v>size<>;<>
+@
+@ margin-right:
 
 
 
@@ -1063,6 +1283,10 @@ Example:
 ### Padding - Set All
 
 <cb>padding: <v>size<>;<>
+
+<cb>padding: <v>top-bottom<> <v>right-left<>;<>
+
+<cb>padding: <v>top<> <v>right-left<> <v>bottom<>;<>
 
 <cb>padding: <v>top<> <v>right<> <v>bottom<> <v>left<>;<>
 
@@ -1080,30 +1304,44 @@ Example:
 <cb>p {
 	padding: 16px 0 16px 0;
 }<>
+@
+@ padding:
+
 
 
 ### Padding - Set Top
 
 <cb>padding-top: <v>size<>;<>
+@
+@ padding-top:
+
 
 
 ### Padding - Set Bottom
 
 <cb>padding-bottom: <v>size<>;<>
+@
+@ padding-bottom:
+
 
 
 ### Padding - Set Left
 
 <cb>padding-left: <v>size<>;<>
+@
+@ padding-left:
+
 
 
 ### Padding - Set Right
 
 <cb>padding-right: <v>size<>;<>
+@
+@ padding-right:
 
 
 
-### Outline
+## Outline
 
 <cb>outline: <v>settings<>;<>
 
@@ -1111,19 +1349,50 @@ Examples:
 
 <cb>outline: none;<>
 @
-@ focus, active, selected
+@ none, focus, active, selected
+@ outline:
 
 
-
-## Box Sizing
+## Sizing
 @
-@ box-size-only, box-sizing-only, box-size, size, dimensions
+@ sizes, dimensions
+
+
+
+### Box Sizing
+
+<cb>box-sizing: <v>value<><>
+
+
+Values:
+
+<in>border-box
+content-box<>
+
+
+border-box		Include padding, border in element's total width / height
+content-box		Exclude padding, border from the element's total width / height
+
+Default: content-box
+
+
+MDN Docs: <l https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing>box-sizing<>
+@
+@ width, height, dimensions, total, sizing
+@ box-size-only, box-sizing-only, box-size
 
 
 
 ### Element - Height
 
 <cb>height: <v>size<>;<>
+
+
+Sets the height of the element.
+
+Does not include margins, borders or padding.
+@
+@ height:
 
 
 
@@ -1135,6 +1404,7 @@ Examples:
 Defines the minimum heigh of this element.
 @
 @ Minimum, height-min, min-height
+@ min-height:
 
 
 
@@ -1146,6 +1416,7 @@ Defines the minimum heigh of this element.
 Defines the maximum heigh of this element.
 @
 @ maximum, height-max, max-height
+@ max-height:
 
 
 
@@ -1159,9 +1430,17 @@ height value = value provided by css.
 Changed by <c>box-sizing<>.
 
 
+
 ### Element - Width
 
 <cb>width: <v>size<>;<>
+
+
+Sets the width of the element.
+
+Does not include margins, borders or padding.
+@
+@ width:
 
 
 
@@ -1173,7 +1452,7 @@ Changed by <c>box-sizing<>.
 Defines the minimum width of this element.
 @
 @ Minimum, width-min, min-width
-
+@ min-width:
 
 
 ### Element - Width - Max Width
@@ -1184,6 +1463,7 @@ Defines the minimum width of this element.
 Defines the maximum width of this element.
 @
 @ maximum, width-max, max-width
+@ max-width:
 
 
 
@@ -1195,6 +1475,7 @@ Defines the maximum width of this element.
 width value = value provided by css.
 
 Changed by <c>box-sizing<>.
+
 
 
 ### Element - Set Sizing To Sizing At Border
@@ -1213,24 +1494,33 @@ Example:
 <cb>*, ::after, ::before {
 	box-sizing: border-box;
 }<>
+@
+@ box-sizing:
+
 
 
 
 # Colors
 @
 @ Colours
+@ colors-only, colours-only
 
 
 
-### Color - Units
+### Color - Units - Hex
 
 <cb>#<v>FFF<><>
 
 <cb>#<v>FFFFFF<><>
 
 
+Defines RGB colors using hex values.
+
+
 Full Color List:
 <l>https://en.wikipedia.org/wiki/Web_colors<>
+@
+@ #
 
 
 
@@ -1243,7 +1533,7 @@ Full Color List:
 
 <c><v>hue<><>				0 - 360
 <c><v>saturation<><>		0% - 100%
-<c><v>lightness<><>		0% - 100%		Black (0%) - White (100%)
+<c><v>lightness<><>		0% - 100%		Black (0%) - Color (50%) - White (100%)
 <c><v>alpha<><>			0.0 - 1.0			Transparant (0) - Opaque (1)
 
 
@@ -1251,10 +1541,11 @@ Example:
 
 <cb>button {
 	<#>/* Navy Blue */<>
-	background: hsa(240, 100%, 25%, 0.75);
+	background: hsla(240, 100%, 25%, 0.75);
 }<>
 @
-@ hsl()
+@ hls, hlsa
+@ hsl(), hsla()
 
 
 
@@ -1281,16 +1572,42 @@ Example:
 
 
 
+### Color - Units - RGB / RGBA %
+
+<cb>rgb(<v>red<>%, <v>green<>%, <v>blue<>%)<>
+
+<cb>rgba(<v>red<>%, <v>green<>%, <v>blue<>%, <v>alpha<>%)<>
+
+
+Value Range:	<c>0% - 100%<>
+
+
+Example:
+
+<cb>.translucent-red {
+	background: rgba(100%, 0%, 0%, 50%);
+}<>
+@
+@ rgb(), rgba()
+
+
+
 ### Colors - Foreground
 
-<cb>color <v>color-unit<>;<>
+<cb>color: <v>color-unit<>;<>
 @
 @ main, front
+@ color:
+
 
 
 ### Colors - Background
 
 <cb>background <v>color-unit<>;<>
+
+<cb>background-color <v>color-unit<>;<>
+@
+@ background-color:, background:
 
 
 
@@ -1313,7 +1630,6 @@ Example:
 }
 
 \<span><v>Some Text<>\</span><>
-
 
 
 
@@ -1391,7 +1707,7 @@ From W3 Schools:
 
 # Size
 @
-@ dimensions
+@ dimensions, length
 
 
 ### Size - Units
@@ -1453,26 +1769,139 @@ From W3 Schools:
 
 
 
-# Links
+# Links / \<a href>
+@
+@ link-only, \<a>, href, a-only, a:, a
 
-<c>a:link {<v>...<>}<>
-<c>a:visited {<v>...<>}<>
-<c>a:hover {<v>...<>}<>			<#>When under mouse.<>
-<c>a:focus {<v>...<>}<>			<#>When selected.<>
-<c>a:active {<v>...<>}<>			<#>When clicked.<>
+
+## Link - Basics
+
+<table><col>Link<><col><c>a:link {<v>...<>}<><>
+<col>Link, Visited<><col><c>a:visited {<v>...<>}<><>
+<col>Link, Hover<><col><c>a:hover {<v>...<>}<><><col><#>When under mouse.<><>
+<col>Link, Selected<><col><c>a:focus {<v>...<>}<><><col><#>When selected.<><>
+<col>Link, Active<><col><c>a:active {<v>...<>}<><><col><#>When clicked.<><><>
 
 
 Example:
 
-<c>a:link {text-decoration: none; }<>
+<cb>a:link {
+	text-decoration: none;
+}<>
 
-<c>a:visited {text-decoration: none; }<>
+<cb>a:visited 
+	text-decoration: none;
+}<>
 
-<c>a:hover {text-decoration: underline; }<>
+<cb>a:hover 
+	text-decoration: underline;
+}<>
 
-<c>a:active {text-decoration: underline; }<>
+<cb>a:active 
+	text-decoration: underline;
+}<>
 @
 @ clicked, :link, :visited: :hover, :focus, :active
+
+
+## Link - Details
+
+
+### Link - Basic
+
+<cb>a:link {
+	<v>...<>
+}<>
+
+
+Defines the style of a basic link.
+
+This link must not have been visited, is not selected or under the mouse.
+@
+@ a:link, a link
+
+
+
+### Link - Visited
+
+<cb>a:visited {
+	<v>...<>
+}<>
+
+
+Defines the style of a link that has been visited by the user.
+@
+@ a:visited, a visited
+
+
+
+### Link - Hover
+
+<cb>a:hover {
+	<v>...<>
+}<>
+
+
+Sets the style when under the mouse pointer.
+@
+@ mouse over, under, pointer
+
+
+
+### Link - Selected
+
+<cb>a:focus {
+	<v>...<>
+}<>
+
+
+Defines the style of a link that is currently in focus.
+@
+@ a:focus, a focus
+
+
+
+
+### Link - Active
+
+<cb>a:active {
+	<v>...<>
+}<>
+
+Defines the style of a link that is being clicked or used.
+@
+@ a:active, a active
+
+
+
+## Link Examples
+
+
+### Link Example - Style Color, No Underline
+
+Define a blue link without an underscore.
+
+<cb>a:link {
+	text-decoration: none;
+	color: #<v>0055FF<>;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #<v>0055FF<>;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #<v>0043CC<>;
+}
+
+a:active {
+	text-decoration: none;
+	color: #<v>002A80<>;
+}<>
+@
+@ style colored, colour, coloured
 
 
 
@@ -1793,7 +2222,7 @@ The child items contained within the flexbox.
 
 
 
-### Flex Size (flex-basis)
+### Flex Size / flex-basis
 
 <cb>flex-basis: 0;<>
 
@@ -1803,6 +2232,8 @@ The child items contained within the flexbox.
 
 <!>Review from:
 <l>https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis<>
+@
+@ flex-base, basis, base
 
 
 
@@ -1812,6 +2243,8 @@ The main direction a flex control is stacked.
 
 Row - Main Axis = Horizontal Stacking
 Column - Main Axis = Vertical Stacking
+
+Default: Row, Left to Right
 @
 @ main-axis
 
@@ -1827,8 +2260,7 @@ Column - Cross Axis = Horizontal (Width)
 
 
 
-## Details
-
+## Flex Container
 
 
 ### Flex Container - Define
@@ -1838,68 +2270,85 @@ Column - Cross Axis = Horizontal (Width)
 @ display flex, create, new
 
 
-### Flex Container - Direction (flex-direction)
 
-<cb>flex-direction: <v>flex-direction<>;<>
+### Flex Container - Direction / flex-direction
+
+<cb>flex-direction: <v>direction<>;<>
 
 
-<c><v>flex-direction<><>  <s>-<>  <c>row<>  <s>|<>  <c>row-reverse<>  <s>|<>  <c>column<>  <s>|<>  <c>column-reverse<>
+<c><v>direction<><>  <s>-<>  <c>row<>  <s>|<>  <c>row-reverse<>  <s>|<>  <c>column<>  <s>|<>  <c>column-reverse<>
 
-	<c>row<>					Left To Right			<#>(Default)<>
-	<c>row-reverse<>			Right To Left
-	<c>column<>				Top To Bottom
-	<c>column-reverse<>		Bottom To Top 
+<table><col><c>row<><><col>Horizontal - Left To Right<><col><#>(Default)<><>
+<col><c>row-reverse<><><col>Horizontal - Right To Left<>
+<col><c>column<><><col>Vertical - Top To Bottom<>
+<col><c>column-reverse<>	<><col>Vertical - Bottom To Top <><>
 @
 @ flex-direction, column-reverse, row-reverse
-@ Top To Bottom, Left To Right, Vertical, Horizortal, Set
+@ top to bottom, left to right, vertical, horizortal, vertically, horizortally, set
 
 
 
-### Flex Container - Wrap (flex-wrap)
+### Flex Container - Wrap / flex-wrap
 
 <cb>flex-wrap: <v>wrap-type<>;<>
 
 
-<c><v>wrap-type<><>  <s>-<>  <c>wrap<>  <s>|<>  <c>wrap-reverse<>  <s>|<>  <c>no-wrap<>
+<c><v>wrap-type<><>  <s>-<>  <c>wrap<>  <s>|<>  <c>wrap-reverse<>  <s>|<>  <c>nowrap<>
 
-	<c>wrap<>				Wrap Top To Bottom
-	<c>wrap-reverse<>		Wrap Bottom To Top
-	<c>no-wrap<>				No Wrap				<#>(Default)<>
+<table><col><c>wrap<><><col>Wrap Start to End<>
+<col><c>wrap-reverse<><><col>Wrap End to Start<>
+<col><c>nowrap<>			<><col>No Wrap<><col><#>(Default)<><><>
 
 
 Causes the line to wrap when the line becames shorter than the minimum elements width.
 
 <c>no-wrap<> forces items to remain on the same row / column.
+They will overflow off the screen.
 @
-@ flex-wrap, wrap-reverse, no-wrap
-@ Top To Bottom, Left To Right, Vertical, Horizortal
+@ flex-wrap, wrap-reverse, no-wrap, nowrap
+@ top to bottom, left to right, vertical, horizortal, reverse
 
 
 
-### Flex Container - Flow (flex-flow)
+### Flex Container - Flow / flex-flow
 
-<cb>flex-flow: <v>flex-direction<> <v>wrap-type<>;<>
+<cb>flex-flow: <v>direction<> <v>wrap-type<>;<>
 
 
 Combines <c>flex-direction<> and <c>flex-wrap<> in one attribute.
+
+
+<c><v>direction<><>  <s>-<>  <c>row<>  <s>|<>  <c>row-reverse<>  <s>|<>  <c>column<>  <s>|<>  <c>column-reverse<>
+
+<table><col><c>row<><><col>Horizontal - Left To Right<><col><#>(Default)<><>
+<col><c>row-reverse<><><col>Horizontal - Right To Left<>
+<col><c>column<><><col>Vertical - Top To Bottom<>
+<col><c>column-reverse<>	<><col>Vertical - Bottom To Top <><>
+
+<c><v>wrap-type<><>  <s>-<>  <c>wrap<>  <s>|<>  <c>wrap-reverse<>  <s>|<>  <c>no-wrap<>
+
+<table><col><c>wrap<><><col>Wrap Start to End<>
+<col><c>wrap-reverse<><><col>Wrap End to Start<>
+<col><c>no-wrap<>			<><col>No Wrap<><col><#>(Default)<><><>
 @
 @ flex-flow
-@ Direction, Wrap, No Wrap, Reverse, Row, Column, row-reverse, column-reverse, wrap-reverse
+@ direction, wrap, no wrap, reverse
+@ row, row-reverse, column, column-reverse, wrap, wrap-reverse, no-wrap
 
 
 
-### Flex Container - Align Items Main Axis (justify-content)
+### Flex Container - Align Along Main Axis / justify-content
 
 <cb>justify-content: <v>justify-type<>;<>
 
 
 <c><v>justify-type<><>  <s>-<>  <c>flex-start<>  <s>|<>  <c>flex-end<>  <s>|<>  <c>center<>  <s>|<>  <c>space-between<>  <s>|<>  <c>space-around<>
 
-	<c>flex-start<>			From Start							<#>(Default)<>
-	<c>flex-end<>			From End, Working From Last Item To First
-	<c>center<>				Items Centered
-	<c>space-between<>		Space Items Evenly, Starting from Container Edges
-	<c>space-around<> 		Space Items Evenly, Spaces on Edge Side Too
+<table><col><c>flex-start<>		<><col>From Start<><col><#>(Default)<><>
+<col><c>flex-end<><><col>From End, Working From Last Item To First<>
+<col><c>center<><><col>Items Centered<>
+<col><c>space-between<><><col>Space Items Evenly, Starting from Container Edges<>
+<col><c>space-around<> <><col>Space Items Evenly, Spaces on Edge Side Too<><>
 
 
 Align Items Along Main Axis
@@ -1908,23 +2357,24 @@ Defines how items are packed into a flex container along its main axis.
 @
 @ justify-content
 @ Items, Alignment
+@ flex-start, flex-end, center, space-between, space-around
 
 
 
-### Flex Container - Align Items Cross Axis (align-items)
+### Flex Container - Align Along Cross Axis / align-items
 
-<cb>align-items: <v>alignment-type<>;<>
+<cb>align-items: <v>alignment<>;<>
 
 
-<c><v>alignment-type<><>  <s>-<>  <c>stretch<>  <s>|<>  <c>flex-start<>  <s>|<>  <c>flex-end<>  <s>|<>  <c>center<>  <s>|<>  <c>baseline<>  <s>|<>  <c>space-around<>
+<c><v>alignment<><>  <s>-<>  <c>stretch<>  <s>|<>  <c>flex-start<>  <s>|<>  <c>flex-end<>  <s>|<>  <c>center<>  <s>|<>  <c>baseline<>  <s>|<>  <c>space-around<>
 
-	<c>stretch<>				Fill 100% of Space						<#>(Default)<>
-	<c>flex-start<>			Align Top of Cross Axis
-	<c>flex-end<>			Align Bottom of Cross Axis
-	<c>center<>				Center Items Across Cross Axis
-	<c>baseline<>			Match Item Baselines
-
-	<#>Others<>				There are a lot of other options here.
+<table><col><c>stretch<>			<><col>Fill 100% of Space<><col><#>(Default)<><>
+<col><c>flex-start<><><col>Align Top of Cross Axis<>
+<col><c>flex-end<><><col>Align Bottom of Cross Axis<>
+<col><c>center<><><col>Center Items Across Cross Axis<>
+<col><c>baseline<><><col>Match Item Baselines<>
+<col> <>
+<col><#>Others<><><col>There are a lot of other options here.<><>
 
 
 Align Items Along Cross Axis
@@ -1933,23 +2383,134 @@ Defines how items are packed into a flex container along its main axis.
 @
 @ align-items
 @ Items, Alignment
+@ stretch, flex-start, flex-end, center, baseline
 
 
 
-### Flex Item - Fill
+### Flex Container - Align Content Cross Axis / align-content
+
+<cb>align-content: <v>alignment<>;<>
+
+
+<c><v>alignment<><>  <s>-<>  <c>stretch<>  <s>|<>  <c>flex-start<>  <s>|<>  <c>flex-end<>  <s>|<>  <c>center<>  <s>|<>  <c>space-between<>  <s>|<>  <c>space-around<>
+
+<table><col><c>stretch<>			<><col>Fill 100% of Space<><col><#>(Default)<><>
+<col><c>flex-start<><><col>Pack Lines From Top of Cross Axis<>
+<col><c>flex-end<><><col>Pack Lines From Bottom of Cross Axis<>
+<col><c>center<><><col>Center Across Cross Axis<>
+<col><c>space-between<><><col>Space Lines Evenly, Edge To Edge<>
+<col><c>space-around<><><col>Space Lines Evenly, With Spacing Along Edges<>
+<col> <>
+<col><#>Others<><><col>There are a lot of other options here.<><>
+
+Align items along the cross axis.
+
+
+
+## Flex Items
+
+
+### Flex Item - Align Self
+
+<cb>align-self: <v>alignment<>;<>
+
+<c><v>alignment<>  -  start <s>|<> center <s>|<> end <s>|<> stretch<>
+
+<table><col><c>start<>			<><col>Start of Cross Axis<>
+<col><c>center<><><col>Center in Cross Axis<>
+<col><c>end<><><col>End of Cross Axis<>
+<col> <>
+<col><c>stretch<><><col>Fill Cross Axis<><><>
+
+
+Aligns a flex item cross axis.
+
+
+
+Example:
+
+<cb>header {
+	align-self: stretch
+}<>
+@
+@ cross axis, alignment
+@ start, end, center, stretch, fill
+@ align-self
+
+
+
+### Flex Item - Flex
+
+<cb>flex: <v>grow_value<> <v>shrink_value<> <v>basis<><>
+
+
+Combines flex-grow, flex-shrink, flex-basis into one property.
+
+
+Example:
+
+<cb>flex: 1 0 auto<>
+
+Equivalent To:
+
+<cb>flex-grow: 1
+flex-shrink: 0
+flex-basis: auto<>
+@
+@ grow, shrink, basis
+@ flex:
+
+
+
+### Flex Item - Flex Basis
+
+<cb>flex-basis: <v>basis<>;<>
+
+<c><v>basis<>  -  <v>length<> <s>|<> auto <s>|<> initial <s>|<> inherit<>
+
+<table><col><v>length<>			<><col>A Unit of Length<>
+<col> <>
+<col><c>auto<><><col>The Length of the Flex Item<><col><#>Default<><>
+<col><c>initial<><><col>Set to Default Value<>
+<col><c>inherit<><><col>Inherit from the Parent<><><>
+
+
+Defines the initial length of a flex item on the main axis.
+@
+@ main axis
+@ auto, initial, inherit, length
+@ flex-basis
+
+
+
+### Flex Item - Grow
 
 <cb>flex-grow: 1;<>
 
 <cb>flex-grow: <v>value<>;<>
 
 
-<c><v>value<><>  <s>-<>  <!>what does this do exactly? Can be 0, 1 or some other value.<>
-
+Expands to fill the available space along the main axis.
 
 Expands to take as much main axis space as possible.
 If more than one flex item has the same flex-grow value, they are spaced evenly.
+
+For different values, the flex-grow value states the ratio one item grows in relation to the others.
+An item with flex-grow of 4 will increase in size 4 pixels for every 1 pixel a flex-grow of 1 grows.
+
+Default = 0
 @
-@ Expand
+@ Expand, fill, increase, main axis
+
+
+
+### Flex Item - Grow - Prevent
+
+<cb>flex-grow: 0;<>
+
+Setting a flex-grow value of 0 prevents the item from growing beyond it's natural size.
+@
+@ Expand, fill, stop, disable, don't, decrease, increase, main axis
 
 
 
@@ -1957,65 +2518,63 @@ If more than one flex item has the same flex-grow value, they are spaced evenly.
 
 <cb>flex-shrink: 1;<>
 
-<cb>flex-shrink: 1;<>
+<cb>flex-shrink: <v>value<>;<>
 
-<!>What does this do exactly?<>
+Shrinks the item down when there is not enough space along the main axis.
+
+The value determins how much the item will shrink in comparison to other items.
+An item with flex-shrink of 4 will decrease in size 4 pixels for every 1 pixel a flex-shrink of 1 grows.
+
+Default = 1
 @
-@ Expand
+@ reduce, decrease, main axis
 
 
 
-### Flex Items - Align Item Lines Cross Axis (align-content)
+### Flex Item - Shrink - Prevent
 
-<cb>align-content: <v>alignment-type<>;<>
+<cb>flex-shrink: 0;<>
 
-
-<c><v>alignment-type<><>  <s>-<>  <c>stretch<>  <s>|<>  <c>flex-start<>  <s>|<>  <c>flex-end<>  <s>|<>  <c>center<>  <s>|<>  <c>space-between<>  <s>|<>  <c>space-around<>
-
-	<c>stretch<>				Fill 100% of Space						<#>(Default)<>
-	<c>flex-start<>			Pack Lines From Top of Cross Axis
-	<c>flex-end<>			Pack Lines From Bottom of Cross Axis
-	<c>center<>				Center Across Cross Axis
-	<c>space-between<>			Space Lines Evenly, Edge To Edge
-	<c>space-around<>			Space Lines Evenly, With Spacing Along Edges
-
-	<#>Others<>				There are a lot of other options here.
-
-Align Item Lines Along Cross Axis
-
+Setting the flex-shrink value to 0 prevents the item from reducing below it's natural size along the main axis.
+@
+@ reduce, don't, main axis
 
 
 
 # Text
-
+@
+@ text-only
 
 
 ### Text - Alignment - Horizontal
 
-<cb>text-align: [ left | right | center ]<>
+<cb>text-align: [ left | right | center ];<>
 
 Also aligns images.
 @
+@ text-align:
 @ image, left, right, center, middle, text-align, horizontally
 
 
 
 ### Text - Alignment - Vertical
 
-<cb>vertical-align: [ text-top | middle | text-bottom ]<>
+<cb>vertical-align: [ text-top | middle | text-bottom ];<>
 
 Also aligns images.
 
 <m>(add all tags. there are more)<>
 @
+@ vertical-align:
 @ image, text-top, middle, text-bottom, center, vertical-align, vertically,
 
 
 
 ### Text - Alignment - Word Wrap
 
-<cb>word-wrap: [ break-word ]<>
+<cb>word-wrap: [ break-word ];<>
 @
+@ word-wrap:
 @ image, word-wrap, break-word
 
 
@@ -2026,17 +2585,18 @@ Also aligns images.
 
 Works with headings too.
 @
+@ white-space:
 @ white-space, nowrap
 
 
 
 ### Text - Set Content Character
 
-<cb>content	'\\<v>character_code<>'<>
+<cb>content:	'\\<v>character_code<>';<>
 
 Usage:
 
-<cb>content	'\\<v>FFFF<>'<>
+<cb>content:	'\\<v>FFFF<>';<>
 
 
 Sets the element's content to the character for the given code.
@@ -2048,29 +2608,40 @@ Set To '>':
     content: '\\<v>003E<>';
 }<>
 @
-@ content, '\\', hex value
+@ characters, content, '\\', hex value, unicodeσ
+@ content:
 
 
 
 ### Text - Indent
 
-<cb>text-indent <v>units<><>
+<cb>text-indent: <v>units<>;<>
 
 
 Indent the first line of a paragraph.
 @
 @ text-indent, indentation
+@ text-indent:
 
 
 
 ### Text - Line Height
 
-<cb>line-height <v>units<><>
+<cb>line-height: <v>units<>;<>
 
 
 Defines the height between lines of text.
+
+1 = current line height.
+
+Example:
+
+<cb><v>.some_text<> {
+	line-height: 1.5;
+}
 @
-@ line-height
+@ spacing, gap
+@ line-height:
 
 
 
@@ -2088,8 +2659,9 @@ Defines the height between lines of text.
 <col><c>pre-line<><><col>Collapse White Space To Single Space, Wrap Text When Necessary<>
 <col><c>pre-wrap<><><col>Preserve White Space, Wrap When Necessary (Preformatting Wrap)<><><>
 @
-@ white-space, normal, inherit, initial, nowrap, pre, pre-line, pre-wrap
-@ Wrap, Tabs, New line, NewLine, whitespace, spaces
+@ white-space:
+@ normal, inherit, initial, nowrap, pre, pre-line, pre-wrap
+@ wrap, tabs, new line, newline, whitespace, spaces
 
 
 
@@ -2100,8 +2672,8 @@ Defines the height between lines of text.
 <card><table><col><c>pre<>		<><col>Preserve White Space
 (spaces, tabs, newlines) (Preformatting)<><><>
 @
-@ white-space, pre
-@ Wrap, Tabs, New line, NewLine, whitespace, spaces
+@ white-space:, pre
+@ wrap, tabs, new line, newline, whitespace, spaces
 @ preformatting, preserve
 
 
@@ -2113,14 +2685,15 @@ Defines the height between lines of text.
 <card><table><col><c>pre-wrap<>	<><col>Preserve White Spase, Wrap When Necessary
 (Preformatting Wrap)<><><>
 @
-@ white-space, pre-wrap
-@ Wrap, Tabs, New line, NewLine, whitespace, spaces
+@ white-space:, pre-wrap
+@ wrap, tabs, new line, newline, whitespace, spaces
 @ preformatting
 
 
 # Text - Font
 @
-@ fonts
+@ text-only
+@ fonts, font-only, fonts-only
 
 
 
@@ -2132,6 +2705,8 @@ Defines the height between lines of text.
 
 Color Names:
 <l>https://en.wikipedia.org/wiki/Web_colors<>
+@
+@ color:
 
 
 
@@ -2139,8 +2714,8 @@ Color Names:
 
 <cb>font-family: <v>font-name<>;<>
 @
-@ font-family
-@ Fixed With, monospaced
+@ fixed with, monospaced
+@ font-family:
 
 
 
@@ -2148,7 +2723,7 @@ Color Names:
 
 <cb>font-family: "Times New Roman", Times, serif;<>
 @
-@ font-family
+@ font-family:
 
 
 
@@ -2160,7 +2735,7 @@ Bootstrap List:
 
 <cb>font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"<>
 @
-@ font-family
+@ font-family:
 
 
 
@@ -2172,7 +2747,8 @@ Bootstrap List:
 
 <cb>font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;<>
 @
-@ Fixed With, monospace, font-family
+@ Fixed With, monospace
+@ font-family:
 
 
 
@@ -2182,6 +2758,8 @@ Bootstrap List:
 
 
 1em = 12pt = 16px = 100%
+@
+@ font-size
 
 
 
@@ -2193,7 +2771,8 @@ Bootstrap List:
 
 <cb><c>normal<> <s>|<> <c>italic<> <s>|<> <c>oblique<><>
 @
-@ styling, font-style
+@ styling
+@ font-style:
 
 
 
@@ -2206,7 +2785,8 @@ Bootstrap List:
 <cb><c>none<> <s>|<> <c>underline<> <s>|<> <c>overline<> <s>|<> <c>line-through<><>
 @
 @ font, styling, decoration
-@ text-decoration, none, underline, overline, line-through
+@ text-decoration:
+@ none, underline, overline, line-through
 
 
 
@@ -2214,7 +2794,7 @@ Bootstrap List:
 
 Prefer HTML:
 
-<cb>\<sub><v>text<>\<><>
+<cb>\<sub><v>text<>\</sub><>
 
 But if you must:
 
@@ -2226,6 +2806,7 @@ But if you must:
 Using CSS will lose important sematic meaning from the content.
 @
 @ styling, vertical-align, sub
+@ \<sub>
 
 
 
@@ -2233,7 +2814,7 @@ Using CSS will lose important sematic meaning from the content.
 
 Prefer HTML:
 
-<cb>\<sup><v>text<>\<><>
+<cb>\<sup><v>text<>\</sup><>
 
 But if you must:
 
@@ -2246,6 +2827,7 @@ Using CSS will lose important sematic meaning from the content.
 @
 @ styling
 @ vertical-align, super
+@ \<sup>
 
 
 
@@ -2260,8 +2842,24 @@ Using CSS will lose important sematic meaning from the content.
 400 = normal
 700 = bold
 @
-@ font-weight, normal, bold, lighter, bolder
+@ font-weight:
+@ normal, bold, lighter, bolder
 @ 100, 200, 300, 400, 500, 600, 700, 800, 900
+
+
+
+### Text - Text Transform
+
+<cb>text-transform: <v>style<>;<>
+
+<c>style<>:
+
+<cb><c>none<> <s>|<> <c>capitalize<> <s>|<> <c>lowercase<> <s>|<> <c>uppercase<> <s>|<> <c>full-size-kana<> <s>|<> <c>full-width<><>
+@
+@ styling, font-style
+@ capitalize, uppercase, lowercase, none, full-width, full-size-kana
+@ upper case, lower case, convert, string
+@ text-transform:
 
 
 
@@ -2283,7 +2881,8 @@ Also hides/removes the location and layout.<>
 <col><c>inline<><><col>Display inline.<>
 <col><c>inline-block<><><col>Display as an inline block.<><>
 @
-@ display, block, inline, inline-block, none
+@ display:
+@ block, inline, inline-block, none
 
 
 
@@ -2299,7 +2898,53 @@ Keeps the location and layout.<>
 <col><c>inherit<><><col> <>
 <col><c>visible<><><col> <><>
 @
-@ visibility, visible, hidden, collapse, inherit
+@ visibility:
+@ visible, hidden, collapse, inherit
+
+
+
+# CSS Functions
+
+
+### Size - Calculate
+
+<cb>calc(<v>size-1<> + <v>size-2<> - <v>...<>)<>
+
+
+Combines values togeher
+
+Combines multiple units together to get the combined value.
+
+Supports: +, -, *, /
+
+
+Example:
+
+<cb>.set_width {
+	width: calc(var(--standard-width) + 10% + 1px - 2em);
+}<>
+@
+@ combine, add, subtract, multiply, divide
+@ +, -, *, /
+@ calc()
+
+
+
+# Element - Text Area
+@
+@ textarea
+
+
+### Text Area - Resize - Hide
+
+<cb>textarea {
+	resize: none
+}<>
+
+
+Hides the resize indicator and disables resize on the text area.
+@
+@ disable, prevent
 
 
 
@@ -2378,11 +3023,53 @@ Use Flexbox and a div embedded in a div to center horizontally and vertically.
 
 
 
+### Element - Position Above / Below
+
+<cb>z-index: <v>position_index<><>
+
+
+Sets the position of the element in relation to other page elements.
+
+All elements are given a z-index value.
+Higher values have precedence and are displayed on top of lower value elements.
+
+
+Position Under:
+
+<cb>z-index: -1<>
+
+
+Position On Top:
+
+<cb>z-index: 1000<>
+@
+@ display, lower, higher
+
+
+
 ### Input Box - Hide Border
 
 <cb>input {
 	border: none;
 }<>
+
+
+
+### SVG - Set Color
+
+<cb>svg {
+	fill: <v>color<>;
+}<>
+
+
+Or in the SVG file:
+
+<cb>\<svg fill="currentColor"><v>...<><>
+
+currentColor will use the current foreground color.
+@
+@ colour
+
 
 
 ### Text - Select - Disable
@@ -2401,28 +3088,50 @@ Use any of these…
 user-select: none;				// Depricated
 
 
-# Glossary
+
+# Acronyms
+@ 
+@ Glossary, glossary-only
+@ acronyms-only, acronym-only
 
 
-#### Block Element
+### CSS
+Cascading Style Sheets
+
+
+### SASS
+Syntactically Awesome Style Sheets
+
+
+### SCSS
+Sassy Cascading Style Sheets
+
+
+# Terms
+@
+@ Glossary, glossary-only
+@ terms-only, term-only
+
+
+### Block Element
 A page element that forces a new line to occur.
 vs: Inline element
 
 
-#### Block Elements - All
+### Block Elements - All
 <c>blockquote, div, dl, form, h1...h6, hr, ol, table, ul, li<>
 Everything else is an inline element.
 
 
-#### Box
+### Box
 CSS treats everything as a box. The box has the following elements (outside to inside) Margin, Border, Padding, Content. Margin, Padding and Content are areas.
 
 
-#### Cascading
+### Cascading
 CSS property defined in outer tags cascade down into inner tags unless they are over ridden.
 
 
-#### Class
+### Class
 Identifies a group or class of similar elements.
 
 css:
@@ -2437,7 +3146,7 @@ html:
 
 
 
-#### ID
+### ID
 Identifies an individual element.
 
 css:	
@@ -2452,14 +3161,14 @@ html:
 
 
 
-#### Inline Element
+### Inline Element
 A page element that does not force a new line.
 
 vs: Block Element
 
 
 
-#### Media Query Breakpoint
+### Media Query Breakpoint
 
 <!>Need a better definition here.<>
 
@@ -2467,35 +3176,35 @@ Defines a screen size or device that then dictates how the page should be layed 
 
 
 
-#### Positioning
+### Positioning
 4 types - static, fixed, relative, absolute.
 
 
-#### Positioning - Absolute
+### Positioning - Absolute
 Positions are relative to the first parent element that has a position other than static.
 If there is no element, then the position is relative to the html block.
 
 
-#### Positioning - Fixed
+### Positioning - Fixed
 Positions are relative to the browser window.
 Fixed positions can overlap.
 
 
-#### Positioning - Relative
+### Positioning - Relative
 Positioned relative to its normal position.
 
 
-#### Positioning - Static
+### Positioning - Static
 Default. Follows the normal flow of the page.
 Not affected by: top, bottom, left, right properties.
 
 
-#### Pseudo-Class
+### Pseudo-Class
 A selector based on special information not contained in the document. Examples hover, first element
 
 
 
-#### Responsive Web Design
+### Responsive Web Design
 
 <!>Need a better definition and theory here.<>
 
@@ -2507,16 +3216,33 @@ Ingredients
 
 
 
-#### Selector
+### SASS
+Syntactically Awesome Style Sheets
+
+A css preprocessor that uses a haml like format (or indented syntax).
+It can also process SCSS.
+It supports functions, variables, nesting, mixins.
+
+
+
+### SCSS
+Sassy Cascading Style Sheets
+
+A superset of CSS that compiles down to regular css.
+It is supported by SASS.
+
+
+
+### Selector
 Declares what part of the markup a style is applied to.
 Includes classes, ids, pseudo-classes and elements.
 
 
-#### Style
+### Style
 A group of tags and styling types to be applied to a particular html item
 
 
-#### Style Tag
+### Style Tag
 A tag is defined in a css style block and it describes a type of styling to apply to a html element.
 eg: background-color
 
